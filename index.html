@@ -1,219 +1,951 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Yash Patil's Website</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Custom Google font-->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body class="d-flex flex-column h-100">
-        <main class="flex-shrink-0">
-            <!-- Navigation-->
-            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
-                <div class="container px-5">
-                    <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Yash Patil</span></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
-                            <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-<!--                             <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li> -->
-                        </ul>
-                    </div>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Yash Patil - AI/ML Engineer, Data Scientist & Data Engineer. Building intelligent systems with cutting-edge technology." />
+    <meta name="author" content="Yash Patil" />
+    <meta name="keywords" content="AI, Machine Learning, Data Science, Data Engineer, Python, TensorFlow, RAG, LLM, Multi-Agent Systems" />
+    <meta property="og:title" content="Yash Patil - AI/ML Engineer & Data Scientist" />
+    <meta property="og:description" content="Building intelligent systems with cutting-edge AI/ML technology" />
+    <meta property="og:image" content="assets/profile.png" />
+    <title>Yash Patil | AI/ML Engineer & Data Scientist</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="loader">
+            <div class="loader-inner">
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
                 </div>
-            </nav>
-            <!-- Header-->
-            <header class="py-5">
-                <div class="container px-5 pb-5">
-                    <div class="row gx-5 align-items-center">
-                        <div class="col-xxl-5">
-                            <!-- Header text content-->
-                            <div class="text-center text-xxl-start">
-                                <div class="badge bg-gradient-primary-to-secondary text-white mb-4"><div class="text-uppercase">AI &middot; ML &middot; Data Scientist &middot;Data Engineer</div></div>
-                                <div class="fs-3 fw-light text-muted">Hi! I'm </div>
-                                <h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline">Yash Patil</span></h1>
-                                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
-                                    <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="resume.html">Resume</a>
-                                    <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="projects.html">Projects</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xxl-7">
-                            <!-- Header profile picture-->
-                            <div class="d-flex justify-content-center mt-5 mt-xxl-0">
-                                <div class="profile bg-gradient-primary-to-secondary">
-                                    <!-- TIP: For best results, use a photo with a transparent background like the demo example below-->
-                                    <!-- Watch a tutorial on how to do this on YouTube (link)-->
-                                    <img class="profile-img" src="assets/profile.png" alt="..." />
-                                    <div class="dots-1">
-                                        <!-- SVG Dots-->
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4" xml:space="preserve">
-                                            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
-                                                <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z"></path>
-                                                <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z"></path>
-                                                <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z"></path>
-                                                <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z"></path>
-                                                <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z"></path>
-                                                <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z"></path>
-                                                <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z"></path>
-                                                <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z"></path>
-                                                <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z"></path>
-                                                <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z"></path>
-                                                <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z"></path>
-                                                <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z"></path>
-                                                <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z"></path>
-                                                <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z"></path>
-                                                <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z"></path>
-                                                <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z"></path>
-                                                <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z"></path>
-                                                <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z"></path>
-                                                <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z"></path>
-                                                <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z"></path>
-                                            </g>
-                                        </svg>
-                                        <!-- END of SVG dots-->
-                                    </div>
-                                    <div class="dots-2">
-                                        <!-- SVG Dots-->
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4" xml:space="preserve">
-                                            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
-                                                <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z"></path>
-                                                <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z"></path>
-                                                <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z"></path>
-                                                <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z"></path>
-                                                <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z"></path>
-                                                <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z"></path>
-                                                <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z"></path>
-                                                <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z"></path>
-                                                <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z"></path>
-                                                <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z"></path>
-                                                <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z"></path>
-                                                <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z"></path>
-                                                <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z"></path>
-                                                <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z"></path>
-                                                <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z"></path>
-                                                <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z"></path>
-                                                <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z"></path>
-                                                <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z"></path>
-                                                <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z"></path>
-                                                <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z"></path>
-                                            </g>
-                                        </svg>
-                                        <!-- END of SVG dots-->
-                                    </div>
-                                    <div class="dots-3">
-                                        <!-- SVG Dots-->
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4" xml:space="preserve">
-                                            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
-                                                <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z"></path>
-                                                <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z"></path>
-                                                <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z"></path>
-                                                <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z"></path>
-                                                <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z"></path>
-                                                <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z"></path>
-                                                <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z"></path>
-                                                <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z"></path>
-                                                <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z"></path>
-                                                <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z"></path>
-                                                <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z"></path>
-                                                <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z"></path>
-                                                <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z"></path>
-                                                <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z"></path>
-                                                <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z"></path>
-                                                <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z"></path>
-                                                <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z"></path>
-                                                <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z"></path>
-                                                <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z"></path>
-                                                <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z"></path>
-                                            </g>
-                                        </svg>
-                                        <!-- END of SVG dots-->
-                                    </div>
-                                    <div class="dots-4">
-                                        <!-- SVG Dots-->
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4" xml:space="preserve">
-                                            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
-                                                <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z"></path>
-                                                <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z"></path>
-                                                <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z"></path>
-                                                <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z"></path>
-                                                <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z"></path>
-                                                <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z"></path>
-                                                <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z"></path>
-                                                <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z"></path>
-                                                <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z"></path>
-                                                <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z"></path>
-                                                <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z"></path>
-                                                <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z"></path>
-                                                <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z"></path>
-                                                <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z"></path>
-                                                <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z"></path>
-                                                <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z"></path>
-                                                <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z"></path>
-                                                <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z"></path>
-                                                <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z"></path>
-                                                <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z"></path>
-                                            </g>
-                                        </svg>
-                                        <!-- END of SVG dots-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
                 </div>
-            </header>
-            <!-- About Section-->
-            <section class="bg-light py-5">
-                <div class="container px-5">
-                    <div class="row gx-5 justify-content-center">
-                        <div class="col-xxl-8">
-                            <div class="text-center my-5">
-                                <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">About Me</span></h2>
-                                <p class="lead fw-light mb-4">My name is Yash Patil</p>
-                                <p class="text-muted">I bring over three years of extensive experience in the field of data science, during which I have undertaken various challenging projects and honed my skills. I'm excited by learning new things, contributing to the data science community, and spreading the word of data!
-I'm fluent at Python, SQL databases, BI tools, and more, with a deep interest in machine learning.</p>
-                                <div class="d-flex justify-content-center fs-2 gap-4">
-                                    <a class="text-gradient" href="https://twitter.com/YASHPATIL10"><i class="bi bi-twitter"></i></a>
-                                    <a class="text-gradient" href="https://www.linkedin.com/in/yashpatil23/"><i class="bi bi-linkedin"></i></a>
-                                    <a class="text-gradient" href="https://github.com/yashpatil582"><i class="bi bi-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="loader-line-wrap">
+                    <div class="loader-line"></div>
                 </div>
-            </section>
-        </main>
-        <!-- Footer-->
-        <footer class="bg-white py-4 mt-auto">
-            <div class="container px-5">
-                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0">Copyright &copy; yashpatil582 2024</div></div>
-                    <div class="col-auto">
-                        <a class="small" href="#!">Privacy</a>
-                        <span class="mx-1">&middot;</span>
-                        <a class="small" href="#!">Terms</a>
-                        <span class="mx-1">&middot;</span>
-                        <a class="small" href="#!">Contact</a>
+            </div>
+            <span class="loader-text">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursor-follower"></div>
+
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-text">&lt;YP /&gt;</span>
+            </a>
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+                    <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
+                    <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="bi bi-moon-fill" id="theme-icon"></i>
+                </button>
+                <a href="assets/Yash_Patil_Resume.pdf" class="btn btn-primary btn-sm" download>
+                    <i class="bi bi-download"></i> Resume
+                </a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <div class="hero-badge" data-aos="fade-down" data-aos-delay="200">
+                    <span class="badge-dot"></span>
+                    Available for opportunities
+                </div>
+                <h1 class="hero-title" data-aos="fade-up" data-aos-delay="300">
+                    Hi, I'm <span class="gradient-text">Yash Patil</span>
+                </h1>
+                <div class="hero-subtitle" data-aos="fade-up" data-aos-delay="400">
+                    <span class="typing-text" id="typing-text"></span>
+                    <span class="typing-cursor">|</span>
+                </div>
+                <p class="hero-description" data-aos="fade-up" data-aos-delay="500">
+                    Building intelligent systems that transform data into actionable insights.
+                    Specializing in <span class="highlight">AI/ML</span>, <span class="highlight">LLMs</span>,
+                    <span class="highlight">Multi-Agent Systems</span>, and <span class="highlight">Data Engineering</span>.
+                </p>
+                <div class="hero-cta" data-aos="fade-up" data-aos-delay="600">
+                    <a href="#projects" class="btn btn-primary btn-lg">
+                        <span>View My Work</span>
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-outline btn-lg">
+                        <span>Get In Touch</span>
+                    </a>
+                </div>
+                <div class="hero-social" data-aos="fade-up" data-aos-delay="700">
+                    <a href="https://github.com/yashpatil582" target="_blank" class="social-link" aria-label="GitHub">
+                        <i class="bi bi-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/yashpatil23/" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                    <a href="https://twitter.com/YASHPATIL10" target="_blank" class="social-link" aria-label="Twitter">
+                        <i class="bi bi-twitter-x"></i>
+                    </a>
+                    <a href="mailto:yashpatil582@gmail.com" class="social-link" aria-label="Email">
+                        <i class="bi bi-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image" data-aos="fade-left" data-aos-delay="400">
+                <div class="image-container">
+                    <div class="image-glow"></div>
+                    <img src="assets/profile.png" alt="Yash Patil" class="profile-image" />
+                    <div class="image-ring"></div>
+                    <div class="floating-icons">
+                        <div class="floating-icon icon-1"><i class="bi bi-braces"></i></div>
+                        <div class="floating-icon icon-2"><i class="bi bi-robot"></i></div>
+                        <div class="floating-icon icon-3"><i class="bi bi-database"></i></div>
+                        <div class="floating-icon icon-4"><i class="bi bi-graph-up"></i></div>
                     </div>
                 </div>
             </div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
+            <div class="hero-scroll">
+                <a href="#about" class="scroll-indicator">
+                    <span>Scroll Down</span>
+                    <div class="mouse">
+                        <div class="wheel"></div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about section" id="about">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-subtitle">Get To Know</span>
+                    <h2 class="section-title">About Me</h2>
+                </div>
+                <div class="about-content">
+                    <div class="about-image" data-aos="fade-right">
+                        <div class="about-image-wrapper">
+                            <img src="assets/profile.png" alt="Yash Patil" />
+                            <div class="experience-badge">
+                                <span class="years">3+</span>
+                                <span class="text">Years<br>Experience</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-text" data-aos="fade-left">
+                        <div class="about-cards">
+                            <div class="about-card" data-aos="zoom-in" data-aos-delay="100">
+                                <i class="bi bi-mortarboard"></i>
+                                <h3>Education</h3>
+                                <p>M.S. Computer Science<br>Santa Clara University</p>
+                            </div>
+                            <div class="about-card" data-aos="zoom-in" data-aos-delay="200">
+                                <i class="bi bi-briefcase"></i>
+                                <h3>Experience</h3>
+                                <p>3+ Years in<br>AI/ML & Data Science</p>
+                            </div>
+                            <div class="about-card" data-aos="zoom-in" data-aos-delay="300">
+                                <i class="bi bi-folder"></i>
+                                <h3>Projects</h3>
+                                <p>20+ Completed<br>Projects</p>
+                            </div>
+                        </div>
+                        <p class="about-description" data-aos="fade-up" data-aos-delay="400">
+                            I'm a passionate <strong>AI/ML Engineer</strong> and <strong>Data Scientist</strong> with expertise in building
+                            intelligent systems that solve real-world problems. My journey spans from developing
+                            <strong>multi-agent chatbot applications</strong> to implementing <strong>RAG systems with LlamaIndex</strong>
+                            and building <strong>GPT models from scratch</strong>.
+                        </p>
+                        <p class="about-description" data-aos="fade-up" data-aos-delay="500">
+                            Currently pursuing my Master's at <strong>Santa Clara University</strong>, I've worked with companies like
+                            <strong>Searchspring</strong> and <strong>Anju Software</strong>, where I built scalable data pipelines
+                            serving 1400+ clients and improved efficiency by 45% through AI-powered solutions.
+                        </p>
+                        <div class="about-stats" data-aos="fade-up" data-aos-delay="600">
+                            <div class="stat">
+                                <span class="stat-number" data-target="20">0</span>
+                                <span class="stat-label">Projects</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" data-target="1400">0</span>
+                                <span class="stat-label">Clients Served</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" data-target="45">0</span>
+                                <span class="stat-label">% Efficiency Boost</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills section" id="skills">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-subtitle">My Expertise</span>
+                    <h2 class="section-title">Skills & Technologies</h2>
+                </div>
+                <div class="skills-content">
+                    <!-- Skill Categories -->
+                    <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="category-title">
+                            <i class="bi bi-robot"></i>
+                            AI & Machine Learning
+                        </h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">Scikit-Learn</span>
+                            <span class="skill-tag">LangChain</span>
+                            <span class="skill-tag">LlamaIndex</span>
+                            <span class="skill-tag">RAG Systems</span>
+                            <span class="skill-tag">NLP</span>
+                            <span class="skill-tag">Deep Learning</span>
+                            <span class="skill-tag">Transfer Learning</span>
+                            <span class="skill-tag">Multi-Agent Systems</span>
+                        </div>
+                    </div>
+                    <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="category-title">
+                            <i class="bi bi-code-slash"></i>
+                            Programming Languages
+                        </h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">R</span>
+                            <span class="skill-tag">Go</span>
+                            <span class="skill-tag">Scala</span>
+                            <span class="skill-tag">Bash</span>
+                        </div>
+                    </div>
+                    <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="category-title">
+                            <i class="bi bi-database"></i>
+                            Data Engineering
+                        </h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Apache Spark</span>
+                            <span class="skill-tag">PySpark</span>
+                            <span class="skill-tag">Databricks</span>
+                            <span class="skill-tag">Apache Kafka</span>
+                            <span class="skill-tag">Apache Flink</span>
+                            <span class="skill-tag">ETL Pipelines</span>
+                            <span class="skill-tag">Data Warehousing</span>
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">NumPy</span>
+                        </div>
+                    </div>
+                    <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
+                        <h3 class="category-title">
+                            <i class="bi bi-cloud"></i>
+                            Cloud & DevOps
+                        </h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">Microsoft Azure</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">CI/CD</span>
+                            <span class="skill-tag">Streamlit</span>
+                        </div>
+                    </div>
+                    <div class="skill-category" data-aos="fade-up" data-aos-delay="500">
+                        <h3 class="category-title">
+                            <i class="bi bi-bar-chart"></i>
+                            Visualization & Tools
+                        </h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Tableau</span>
+                            <span class="skill-tag">Power BI</span>
+                            <span class="skill-tag">Matplotlib</span>
+                            <span class="skill-tag">Plotly</span>
+                            <span class="skill-tag">Jupyter</span>
+                            <span class="skill-tag">Django</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Animated Skill Bars -->
+                <div class="skill-bars" data-aos="fade-up" data-aos-delay="600">
+                    <h3 class="skill-bars-title">Core Competencies</h3>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-info">
+                            <span>Machine Learning & AI</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-bar-fill" data-width="95"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-info">
+                            <span>Data Engineering</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-bar-fill" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-info">
+                            <span>LLMs & RAG Systems</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-bar-fill" data-width="88"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-info">
+                            <span>Python Development</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-bar-fill" data-width="95"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-info">
+                            <span>Cloud Platforms</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-bar-fill" data-width="85"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="experience section" id="experience">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-subtitle">My Journey</span>
+                    <h2 class="section-title">Work Experience</h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <span class="timeline-date">Jan 2024 - Present</span>
+                                <span class="timeline-badge">Current</span>
+                            </div>
+                            <h3 class="timeline-title">Data Scientist (Student Assistant)</h3>
+                            <h4 class="timeline-company">Santa Clara University</h4>
+                            <ul class="timeline-description">
+                                <li>Leading the Workday Student platform transition with advanced ETL processes</li>
+                                <li>Applying data science expertise to optimize university operations</li>
+                                <li>Building predictive models for student success initiatives</li>
+                            </ul>
+                            <div class="timeline-tech">
+                                <span>Python</span>
+                                <span>SQL</span>
+                                <span>ETL</span>
+                                <span>Data Science</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <span class="timeline-date">Apr 2023 - Aug 2023</span>
+                            </div>
+                            <h3 class="timeline-title">Data Engineer</h3>
+                            <h4 class="timeline-company">Searchspring</h4>
+                            <ul class="timeline-description">
+                                <li>Implemented spell correction system serving 400+ clients</li>
+                                <li>Built PySpark big data pipeline processing data for 1400+ clients</li>
+                                <li>Optimized search algorithms improving user experience significantly</li>
+                            </ul>
+                            <div class="timeline-tech">
+                                <span>PySpark</span>
+                                <span>Big Data</span>
+                                <span>NLP</span>
+                                <span>Python</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <span class="timeline-date">Mar 2021 - Dec 2022</span>
+                            </div>
+                            <h3 class="timeline-title">Data Scientist Engineer</h3>
+                            <h4 class="timeline-company">Anju Software</h4>
+                            <ul class="timeline-description">
+                                <li>Developed TA-Scan 7, achieving 45% efficiency improvement</li>
+                                <li>Launched DATA API serving multiple enterprise clients</li>
+                                <li>Mentored team members in PySpark, PyTorch, and Python</li>
+                            </ul>
+                            <div class="timeline-tech">
+                                <span>PyTorch</span>
+                                <span>PySpark</span>
+                                <span>APIs</span>
+                                <span>ML</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <span class="timeline-date">Dec 2019 - Jun 2020</span>
+                            </div>
+                            <h3 class="timeline-title">AI Intern</h3>
+                            <h4 class="timeline-company">MarQuery</h4>
+                            <ul class="timeline-description">
+                                <li>Integrated Twilio API for automated communication systems</li>
+                                <li>Developed AI chatbot for e-commerce platform</li>
+                                <li>Implemented NLP solutions for customer support automation</li>
+                            </ul>
+                            <div class="timeline-tech">
+                                <span>AI</span>
+                                <span>Chatbots</span>
+                                <span>Twilio</span>
+                                <span>NLP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects section" id="projects">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-subtitle">My Work</span>
+                    <h2 class="section-title">Featured Projects</h2>
+                </div>
+                <!-- Project Filters -->
+                <div class="project-filters" data-aos="fade-up" data-aos-delay="100">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="ai-ml">AI/ML</button>
+                    <button class="filter-btn" data-filter="llm">LLM & RAG</button>
+                    <button class="filter-btn" data-filter="data">Data Engineering</button>
+                    <button class="filter-btn" data-filter="web">Web Apps</button>
+                </div>
+                <!-- Projects Grid -->
+                <div class="projects-grid">
+                    <!-- Project 1: Databricks Agent Smart Merge -->
+                    <div class="project-card" data-category="ai-ml data" data-aos="fade-up" data-aos-delay="100">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <a href="https://github.com/yashpatil582/databricks-agent-smart-merge-demo" target="_blank" class="project-link">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                            </div>
+                            <div class="project-icon"><i class="bi bi-diagram-3"></i></div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Databricks Agent Smart Merge</h3>
+                            <p class="project-description">Intelligent code merge approach for Databricks Agent that preserves cell context using AI-powered analysis.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>Databricks</span>
+                                <span>AI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 2: Multi-Agent Chatbot -->
+                    <div class="project-card" data-category="ai-ml llm" data-aos="fade-up" data-aos-delay="150">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <a href="https://github.com/yashpatil582/Multi-Agent-Chatbot-Application" target="_blank" class="project-link">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                            </div>
+                            <div class="project-icon"><i class="bi bi-chat-dots"></i></div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Multi-Agent Chatbot Application</h3>
+                            <p class="project-description">Advanced chatbot leveraging multiple AI agents for complex conversational workflows and task handling.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>Multi-Agent</span>
+                                <span>LLM</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 3: Agentic RAG with LlamaIndex -->
+                    <div class="project-card featured" data-category="llm ai-ml" data-aos="fade-up" data-aos-delay="200">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <a href="https://github.com/yashpatil582/Building-Agentic-RAG-with-Llamaindex" target="_blank" class="project-link">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                            </div>
+                            <div class="project-icon"><i class="bi bi-lightning"></i></div>
+                            <div class="featured-badge">Featured</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Agentic RAG with LlamaIndex</h3>
+                            <p class="project-description">Building agentic retrieval-augmented generation systems using LlamaIndex for intelligent document processing.</p>
+                            <div class="project-tech">
+                                <span>LlamaIndex</span>
+                                <span>RAG</span>
+                                <span>Jupyter</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 4: GPT from Scratch -->
+                    <div class="project-card featured" data-category="ai-ml llm" data-aos="fade-up" data-aos-delay="250">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <a href="https://github.com/yashpatil582/gpt_from_scratch" target="_blank" class="project-link">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                            </div>
+                            <div class="project-icon"><i class="bi bi-cpu"></i></div>
+                            <div class="featured-badge">Featured</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">GPT from Scratch</h3>
+                            <p class="project-description">Implementation of GPT model from foundational principles, understanding transformer architecture deeply.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>Transformers</span>
+                                <span>Deep Learning</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 5: Resume Database Chatbot -->
+                    <div class="project-card" data-category="llm ai-ml" data-aos="fade-up" data-aos-delay="300">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <a href="https://github.com/yashpatil582/Resume-Database-Chatbot-Using-Local-LLM" target="_blank" class="project-link">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                            </div>
+                            <div class="project-icon"><i class="bi bi-file-person"></i></div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Resume Database Chatbot</h3>
+                            <p class="project-description">Local LLM-powered chatbot for intelligent resume parsing and candidate matching from databases.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>Local LLM</span>
+                                <span>NLP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 6: Smart ATS Streamlit -->
+                    <div class="project-card" data-category="web ai-ml" data-aos="fade-up" data-aos-delay="350">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <a href="https://github.com/yashpatil582/smart-ats-streamlit" target="_blank" class="project-link">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                            </div>
+                            <div class="project-icon"><i class="bi bi-search"></i></div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Smart ATS System</h3>
+                            <p class="project-description">Intelligent Applicant Tracking System built with Streamlit for resume screening and candidate evaluation.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>Streamlit</span>
+                                <span>AI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 7: AI Job Platform -->
+                    <div class="project-card" data-category="web ai-ml" data-aos="fade-up" data-aos-delay="400">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <a href="https://github.com/yashpatil582/ai-job-platform--1-" target="_blank" class="project-link">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                            </div>
+                            <div class="project-icon"><i class="bi bi-briefcase"></i></div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">AI Job Platform</h3>
+                            <p class="project-description">Full-stack job platform with AI-powered matching and recommendation system for candidates and employers.</p>
+                            <div class="project-tech">
+                                <span>TypeScript</span>
+                                <span>AI</span>
+                                <span>Full-Stack</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 8: ML Chatbot -->
+                    <div class="project-card" data-category="ai-ml" data-aos="fade-up" data-aos-delay="450">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <a href="https://github.com/yashpatil582/ChatBot-Using-Machine-Learning-and-AI" target="_blank" class="project-link">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                            </div>
+                            <div class="project-icon"><i class="bi bi-robot"></i></div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">ML & AI Chatbot</h3>
+                            <p class="project-description">NLP-powered chatbot for student complaint registration and college information with automated responses.</p>
+                            <div class="project-tech">
+                                <span>JavaScript</span>
+                                <span>TensorFlow</span>
+                                <span>NLP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 9: Email Generator -->
+                    <div class="project-card" data-category="ai-ml web" data-aos="fade-up" data-aos-delay="500">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <a href="https://github.com/yashpatil582/Email-Generator" target="_blank" class="project-link">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                            </div>
+                            <div class="project-icon"><i class="bi bi-envelope"></i></div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">AI Email Generator</h3>
+                            <p class="project-description">Intelligent email generation tool using AI for professional communication automation.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>AI</span>
+                                <span>NLP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 10: Multiagent System -->
+                    <div class="project-card" data-category="ai-ml llm" data-aos="fade-up" data-aos-delay="550">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <a href="https://github.com/yashpatil582/multiagent" target="_blank" class="project-link">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                            </div>
+                            <div class="project-icon"><i class="bi bi-people"></i></div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Multi-Agent System</h3>
+                            <p class="project-description">Framework for building and orchestrating multiple AI agents working collaboratively on tasks.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>Agents</span>
+                                <span>AI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 11: Reinforcement Learning -->
+                    <div class="project-card" data-category="ai-ml" data-aos="fade-up" data-aos-delay="600">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <a href="https://github.com/yashpatil582/rl-2" target="_blank" class="project-link">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                            </div>
+                            <div class="project-icon"><i class="bi bi-joystick"></i></div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Reinforcement Learning</h3>
+                            <p class="project-description">Advanced reinforcement learning implementations for training intelligent agents in various environments.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>RL</span>
+                                <span>Deep Learning</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 12: Pollution Notifier -->
+                    <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="650">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <a href="https://github.com/yashpatil582/Pollution-Notifier" target="_blank" class="project-link">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                            </div>
+                            <div class="project-icon"><i class="bi bi-cloud-haze2"></i></div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Pollution Notifier</h3>
+                            <p class="project-description">Android application for real-time pollution monitoring and notifications for environmental awareness.</p>
+                            <div class="project-tech">
+                                <span>Java</span>
+                                <span>Android</span>
+                                <span>APIs</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 13: Search & Games -->
+                    <div class="project-card" data-category="ai-ml" data-aos="fade-up" data-aos-delay="700">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <a href="https://github.com/yashpatil582/search_and_games" target="_blank" class="project-link">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                            </div>
+                            <div class="project-icon"><i class="bi bi-puzzle"></i></div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Search & Games AI</h3>
+                            <p class="project-description">Implementation of AI search algorithms and game-playing agents using various optimization techniques.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>Algorithms</span>
+                                <span>AI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 14: Bulk Email Sender -->
+                    <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="750">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <a href="https://github.com/yashpatil582/bulk-email-sender" target="_blank" class="project-link">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                            </div>
+                            <div class="project-icon"><i class="bi bi-send"></i></div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Bulk Email Sender</h3>
+                            <p class="project-description">Automated email distribution system for sending personalized bulk emails efficiently.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>SMTP</span>
+                                <span>Automation</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 15: Zero to Mastery ML -->
+                    <div class="project-card" data-category="ai-ml" data-aos="fade-up" data-aos-delay="800">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <a href="https://github.com/yashpatil582/zero-to-mastery-ml" target="_blank" class="project-link">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                            </div>
+                            <div class="project-icon"><i class="bi bi-mortarboard"></i></div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">ML Mastery Projects</h3>
+                            <p class="project-description">Comprehensive machine learning projects covering end-to-end ML pipeline implementations.</p>
+                            <div class="project-tech">
+                                <span>Jupyter</span>
+                                <span>Scikit-Learn</span>
+                                <span>ML</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 16: Python Guide -->
+                    <div class="project-card" data-category="data" data-aos="fade-up" data-aos-delay="850">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <a href="https://github.com/yashpatil582/Python-Guide" target="_blank" class="project-link">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                            </div>
+                            <div class="project-icon"><i class="bi bi-book"></i></div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Python Guide</h3>
+                            <p class="project-description">Comprehensive Python programming guide with best practices and advanced concepts.</p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>Tutorial</span>
+                                <span>Best Practices</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="projects-cta" data-aos="fade-up">
+                    <a href="https://github.com/yashpatil582?tab=repositories" target="_blank" class="btn btn-outline btn-lg">
+                        <i class="bi bi-github"></i>
+                        <span>View All Projects on GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section class="certifications section" id="certifications">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-subtitle">Credentials</span>
+                    <h2 class="section-title">Certifications</h2>
+                </div>
+                <div class="cert-grid">
+                    <div class="cert-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="cert-icon"><i class="bi bi-cloud"></i></div>
+                        <h3>Microsoft Azure for Data Engineering</h3>
+                        <p>Microsoft</p>
+                    </div>
+                    <div class="cert-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="cert-icon"><i class="bi bi-cpu"></i></div>
+                        <h3>Complete Machine Learning & Data Science</h3>
+                        <p>Bootcamp Certification</p>
+                    </div>
+                    <div class="cert-card" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="cert-icon"><i class="bi bi-robot"></i></div>
+                        <h3>AI For Everyone</h3>
+                        <p>Coursera / DeepLearning.AI</p>
+                    </div>
+                    <div class="cert-card" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="cert-icon"><i class="bi bi-code-slash"></i></div>
+                        <h3>Introduction to Python for Data Science</h3>
+                        <p>DataCamp</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact section" id="contact">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-subtitle">Get In Touch</span>
+                    <h2 class="section-title">Contact Me</h2>
+                    <p class="section-description">Have a project in mind or want to collaborate? Feel free to reach out!</p>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info" data-aos="fade-right">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Email</h3>
+                                <a href="mailto:yashpatil582@gmail.com">yashpatil582@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Location</h3>
+                                <p>San Francisco Bay Area, CA</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="bi bi-linkedin"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>LinkedIn</h3>
+                                <a href="https://www.linkedin.com/in/yashpatil23/" target="_blank">linkedin.com/in/yashpatil23</a>
+                            </div>
+                        </div>
+                        <div class="contact-social">
+                            <a href="https://github.com/yashpatil582" target="_blank" class="social-btn">
+                                <i class="bi bi-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/yashpatil23/" target="_blank" class="social-btn">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                            <a href="https://twitter.com/YASHPATIL10" target="_blank" class="social-btn">
+                                <i class="bi bi-twitter-x"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <form class="contact-form" data-aos="fade-left" id="contact-form">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required />
+                            <span class="form-icon"><i class="bi bi-person"></i></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required />
+                            <span class="form-icon"><i class="bi bi-envelope"></i></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="Subject" required />
+                            <span class="form-icon"><i class="bi bi-chat-dots"></i></span>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                            <span class="form-icon textarea-icon"><i class="bi bi-pencil"></i></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <span>Send Message</span>
+                            <i class="bi bi-send"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">&lt;YP /&gt;</a>
+                    <p>Building intelligent systems with AI/ML</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/yashpatil582" target="_blank"><i class="bi bi-github"></i></a>
+                    <a href="https://www.linkedin.com/in/yashpatil23/" target="_blank"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://twitter.com/YASHPATIL10" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Yash Patil. All rights reserved. Built with passion.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
 </html>
