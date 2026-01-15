@@ -40,22 +40,26 @@ class YashPatil:
 
     def current_focus(self):
         return [
-            "Building Multi-Agent AI Systems",
-            "Developing RAG Applications with LlamaIndex",
-            "Creating LLM-powered Solutions",
-            "Scaling Data Pipelines"
+            "Building Low-Latency AI Services on Kubernetes/AWS",
+            "Semantic Retrieval Systems (FAISS, Pinecone)",
+            "Agentic Meeting Copilots with Multi-Agent Architecture",
+            "LLM Applications & RAG Systems"
         ]
 
-    def fun_fact(self):
-        return "I built a GPT model from scratch!"
+    def achievements(self):
+        return {
+            "queries_per_day": "2M+",
+            "ndcg_improvement": "15%",
+            "p95_latency": "< 50ms"
+        }
 ```
 
 <br clear="right"/>
 
-- **Currently:** Data Scientist at Santa Clara University
-- **Previously:** Data Engineer @ Searchspring (1400+ clients served)
-- **Expertise:** AI/ML, LLMs, Multi-Agent Systems, Data Engineering
-- **Achievement:** Improved efficiency by 45% at Anju Software
+- **Currently:** AI/ML Engineer at Tip Top Technologies (Shipping AI at scale)
+- **Previously:** Samvid (AI Intern), SCU (Data Scientist), Searchspring (Data Engineer)
+- **Expertise:** Vector DBs (FAISS, Pinecone), LLMs, Multi-Agent Systems, Kubernetes
+- **Achievement:** Built semantic retrieval system handling 2M+ queries/day
 
 ---
 
@@ -69,9 +73,22 @@ class YashPatil:
   <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" />
   <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" />
   <img src="https://img.shields.io/badge/LlamaIndex-8B5CF6?style=for-the-badge&logoColor=white" />
-  <img src="https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" />
-  <img src="https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white" />
-  <img src="https://img.shields.io/badge/Hugging%20Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" />
+  <img src="https://img.shields.io/badge/GPT--4o-412991?style=for-the-badge&logo=openai&logoColor=white" />
+  <img src="https://img.shields.io/badge/Claude-000000?style=for-the-badge&logo=anthropic&logoColor=white" />
+  <img src="https://img.shields.io/badge/Gemini-4285F4?style=for-the-badge&logo=google&logoColor=white" />
+  <img src="https://img.shields.io/badge/Llama_3.1-0467DF?style=for-the-badge&logo=meta&logoColor=white" />
+</p>
+</details>
+
+<details open>
+<summary><b>Vector Databases & Retrieval</b></summary>
+<br>
+<p>
+  <img src="https://img.shields.io/badge/FAISS-00ADD8?style=for-the-badge&logoColor=white" />
+  <img src="https://img.shields.io/badge/Pinecone-000000?style=for-the-badge&logoColor=white" />
+  <img src="https://img.shields.io/badge/ChromaDB-FF6B6B?style=for-the-badge&logoColor=white" />
+  <img src="https://img.shields.io/badge/Weaviate-3BD63B?style=for-the-badge&logoColor=white" />
+  <img src="https://img.shields.io/badge/Semantic_Search-6366F1?style=for-the-badge&logoColor=white" />
 </p>
 </details>
 
@@ -97,7 +114,9 @@ class YashPatil:
   <img src="https://img.shields.io/badge/Databricks-FF3621?style=for-the-badge&logo=databricks&logoColor=white" />
   <img src="https://img.shields.io/badge/Apache%20Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white" />
   <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white" />
+  <img src="https://img.shields.io/badge/Amazon%20Bedrock-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" />
   <img src="https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white" />
+  <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white" />
   <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
 </p>
 </details>
@@ -226,13 +245,13 @@ class YashPatil:
 </td>
 <td width="50%">
 <p>
+  <img src="https://img.shields.io/badge/AWS_Certified_Data_Engineer-FF9900?style=flat-square&logo=amazonaws&logoColor=white" />
+  <br>
+  <img src="https://img.shields.io/badge/Generative_AI_with_LLMs-412991?style=flat-square&logo=coursera&logoColor=white" />
+  <br>
   <img src="https://img.shields.io/badge/Microsoft_Azure_Data_Engineering-0078D4?style=flat-square&logo=microsoftazure&logoColor=white" />
   <br>
   <img src="https://img.shields.io/badge/ML_&_Data_Science_Bootcamp-FF6F00?style=flat-square&logo=tensorflow&logoColor=white" />
-  <br>
-  <img src="https://img.shields.io/badge/AI_For_Everyone-412991?style=flat-square&logo=coursera&logoColor=white" />
-  <br>
-  <img src="https://img.shields.io/badge/Python_for_Data_Science-3776AB?style=flat-square&logo=datacamp&logoColor=white" />
 </p>
 </td>
 </tr>
