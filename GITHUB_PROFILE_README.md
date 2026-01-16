@@ -26,7 +26,7 @@
 
 ---
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People%20with%20professions/Man%20Technologist%20Light%20Skin%20Tone.png" alt="Man Technologist" width="30" /> About Me
+## 👨‍💻 About Me
 
 <img align="right" alt="Coding" width="400" src="https://user-images.githubusercontent.com/74038190/229223263-cf2e4b07-2615-4f87-9c38-e37600f8381a.gif">
 
@@ -62,7 +62,7 @@ class YashPatil:
 
 ---
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Rocket.png" alt="Rocket" width="30" /> Key Achievements
+## 🚀 Key Achievements
 
 <p align="center">
   <img src="https://img.shields.io/badge/Queries%2FDay-2M+-6366F1?style=for-the-badge&logo=amazonaws&logoColor=white" />
@@ -72,7 +72,7 @@ class YashPatil:
 
 ---
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Hammer%20and%20Wrench.png" alt="Tools" width="30" /> Tech Stack
+## 🛠️ Tech Stack
 
 <details open>
 <summary><b>AI & Machine Learning</b></summary>
@@ -144,7 +144,7 @@ class YashPatil:
 
 ---
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Star.png" alt="Star" width="30" /> Featured Projects
+## ⭐ Featured Projects
 
 <table>
 <tr>
@@ -217,11 +217,11 @@ class YashPatil:
 
 ---
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Chart%20Increasing.png" alt="Chart" width="30" /> GitHub Stats
+## 📈 GitHub Stats
 
 <p align="center">
   <img width="49%" src="https://github-readme-stats.vercel.app/api?username=yashpatil582&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=6366F1&icon_color=8B5CF6&text_color=FFFFFF" />
-  <img width="49%" src="https://github-readme-streak-stats.herokuapp.com/?user=yashpatil582&theme=tokyonight&hide_border=true&background=0D1117&stroke=6366F1&ring=8B5CF6&fire=A855F7&currStreakLabel=FFFFFF" />
+  <img width="49%" src="https://streak-stats.demolab.com/?user=yashpatil582&theme=tokyonight&hide_border=true&background=0D1117&stroke=6366F1&ring=8B5CF6&fire=A855F7&currStreakLabel=FFFFFF" />
 </p>
 
 <p align="center">
@@ -235,7 +235,7 @@ class YashPatil:
 
 ---
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Trophy.png" alt="Trophy" width="30" /> GitHub Trophies
+## 🏆 GitHub Trophies
 
 <p align="center">
   <img src="https://github-profile-trophy.vercel.app/?username=yashpatil582&theme=algolia&no-frame=true&no-bg=true&column=7&margin-w=10" />
@@ -243,7 +243,7 @@ class YashPatil:
 
 ---
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Graduation%20Cap.png" alt="Education" width="30" /> Education & Certifications
+## 🎓 Education & Certifications
 
 <table>
 <tr>
@@ -268,7 +268,7 @@ class YashPatil:
 
 ---
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Handshake.png" alt="Handshake" width="30" /> Let's Connect!
+## 🤝 Let's Connect!
 
 <p align="center">
   <i>I'm always open to interesting conversations and collaboration opportunities!</i>
