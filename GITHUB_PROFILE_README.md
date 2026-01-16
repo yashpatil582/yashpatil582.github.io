@@ -59,7 +59,16 @@ class YashPatil:
 - **Currently:** AI/ML Engineer at Tip Top Technologies (Shipping AI at scale)
 - **Previously:** Samvid (AI Intern), SCU (Data Scientist), Searchspring (Data Engineer)
 - **Expertise:** Vector DBs (FAISS, Pinecone), LLMs, Multi-Agent Systems, Kubernetes
-- **Achievement:** Built semantic retrieval system handling 2M+ queries/day
+
+---
+
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Rocket.png" alt="Rocket" width="30" /> Key Achievements
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Queries%2FDay-2M+-6366F1?style=for-the-badge&logo=amazonaws&logoColor=white" />
+  <img src="https://img.shields.io/badge/NDCG%20Improvement-15%25-8B5CF6?style=for-the-badge&logo=google&logoColor=white" />
+  <img src="https://img.shields.io/badge/p95%20Latency-%3C50ms-A855F7?style=for-the-badge&logo=speedtest&logoColor=white" />
+</p>
 
 ---
 
@@ -284,11 +293,6 @@ class YashPatil:
 </p>
 
 ---
-
-<!-- Snake Animation -->
-<p align="center">
-  <img src="https://raw.githubusercontent.com/platane/platane/output/github-contribution-grid-snake-dark.svg" />
-</p>
 
 <!-- Footer -->
 <div align="center">
