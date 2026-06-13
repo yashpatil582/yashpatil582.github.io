@@ -60,6 +60,11 @@ must read louder than the visuals.
    the rendered site AND the RAG index. Never hand-duplicate bio/project text.
 7. **No secrets, PII, or real keys** in commits, logs, or screenshots.
 8. **MIT + reproducibility:** anything added must keep "clone -> one command -> running locally" true.
+9. **Content accuracy (`data/*` is a factual record):** Everything in `data/*` must be factually accurate
+   and defensible. NEVER invent, estimate, or embellish metrics, titles, or claims. Every quantitative claim
+   must trace to Yash's résumé, a project README, or Yash's explicit confirmation; when unsure, omit. A true
+   qualitative statement beats a fabricated number — and never swap an unverifiable number for a different
+   invented one.
 
 ## Flagship demos (build these; map each to a real project — all run on open weights)
 
