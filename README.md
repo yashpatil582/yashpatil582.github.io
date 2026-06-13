@@ -6,8 +6,9 @@ follow). Built open-weight-first: a stranger can clone it and run it locally wit
 one command, and every model call goes through a provider-agnostic adapter so
 closed APIs are a one-line config swap — never a rewrite.
 
-> **Status:** Stage 0 complete — the full site renders from a single typed
-> content layer. Stage 1 (the live RAG agent through a secured proxy) is next.
+> **Status:** Stage 1 complete — the full site renders from a single typed
+> content layer **and** a live, streaming "Chat with Yash" RAG agent answers from
+> it through a secured proxy (open-weight model + pgvector, all abuse controls on).
 
 ## Tech stack
 
@@ -38,6 +39,23 @@ docker compose --profile ai up   # + Postgres/pgvector for Stage 1 RAG
 Useful scripts: `pnpm build` · `pnpm start` · `pnpm lint` · `pnpm typecheck` ·
 `pnpm format`.
 
+### Run the "Chat with Yash" agent locally
+
+The agent needs a Postgres+pgvector database and a `GROQ_API_KEY` (free tier).
+
+```bash
+docker compose --profile ai up -d db        # local pgvector on :5432
+cp .env.example .env.local                   # then set DATABASE_URL + GROQ_API_KEY
+pnpm db:reset                                # build the RAG index from data/*  (idempotent)
+pnpm dev                                     # open http://localhost:3000/#chat
+```
+
+`.env.example` ships Cloudflare Turnstile **test keys** (always pass), so the bot
+check runs end-to-end with no setup. Embeddings run in-process (transformers.js /
+bge-small) — no key, no network. Re-run `pnpm db:reset` whenever you edit `data/*`.
+Already running Postgres on 5432? Add a `docker-compose.override.yml` mapping the
+db to a free port and update `DATABASE_URL`.
+
 ## How content works
 
 All site content lives in one typed source of truth under [`data/`](./data) —
@@ -53,13 +71,19 @@ app/                 # App Router entry (layout, page, globals.css)
 components/
   sections/          # Page sections (hero, about, experience, projects, …)
   ui/                # shadcn/ui primitives
+  chat/              # "Chat with Yash" client (streaming UI, sources, Turnstile)
 data/                # Single source of truth for all content
 public/              # Profile image, résumé PDF, favicon
-lib/                 # Shared utilities (RAG/adapter land here in Stage 1)
+lib/
+  ai/                # Provider-agnostic LLM + embeddings adapters, retrieval, prompt
+  db/                # pgvector client, schema, migrate
+  security/          # origin allow-list, Turnstile, rate limit, client IP
+app/api/chat/        # The secured RAG route (Node runtime, SSE streaming)
+scripts/             # ingest.ts — builds the RAG index from data/*
 _archive/            # Legacy static site + source résumés (gitignored, local)
 ```
 
-## Security posture (enforced on every AI route from Stage 1)
+## Security posture (enforced on every AI route)
 
 No API key or provider secret ever reaches the browser — keys are server-side
 only, and [`.env.example`](./.env.example) lists key **names** only. Each public
@@ -77,7 +101,7 @@ Stage 0 needs nothing but an optional `NEXT_PUBLIC_SITE_URL`. Stage 1 adds
 ## Roadmap
 
 - **Stage 0 ✓** — host-agnostic Next.js app, MIT-licensed, Docker, content layer.
-- **Stage 1** — "Chat with Yash" RAG (open-weight model + pgvector) via secured proxy.
+- **Stage 1 ✓** — "Chat with Yash" RAG (open-weight model + pgvector) via secured proxy.
 - **Stage 2** — voice agent, live eval/hallucination demo, MCP repo agent, vision; publish Agent Skills.
 - **Stage 3** — engineering blog posts (secure live-AI build, eval methodology, MCP agent design).
 
