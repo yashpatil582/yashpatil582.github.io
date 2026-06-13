@@ -42,3 +42,6 @@ yarn-error.log*
 
 # deploy
 .vercel
+
+# local-only docker overrides (machine-specific port mappings, etc.)
+docker-compose.override.yml

@@ -1,3 +1,10 @@
 ignoredBuiltDependencies:
   - sharp
   - unrs-resolver
+# Allow these to run install scripts: onnxruntime-node fetches its native ONNX
+# binary (the in-process embeddings backend), protobufjs builds its codecs, and
+# esbuild (used by tsx for the ingest/migrate scripts) installs its binary.
+onlyBuiltDependencies:
+  - onnxruntime-node
+  - protobufjs
+  - esbuild

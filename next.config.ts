@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  // Keep these Node-only packages out of the bundler: the Postgres driver and
+  // the in-process embeddings runtime (transformers.js + its native ONNX
+  // backend) must load from node_modules at runtime, not be webpacked.
+  serverExternalPackages: ["@huggingface/transformers", "onnxruntime-node", "pg"],
 };
 
 export default nextConfig;
