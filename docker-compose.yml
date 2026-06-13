@@ -1,0 +1,36 @@
+# Host-agnostic local stack.
+#   docker compose up                -> Stage 0: just the site at :3000
+#   docker compose --profile ai up   -> adds Postgres + pgvector for Stage 1 RAG
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
+      # Used by Stage 1 when the `ai` profile is enabled:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/portfolio
+    # Pull in secrets (GROQ_API_KEY, etc.) when present; optional for Stage 0.
+    env_file:
+      - path: .env
+        required: false
+
+  db:
+    profiles: ["ai"]
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: portfolio
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d portfolio"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:

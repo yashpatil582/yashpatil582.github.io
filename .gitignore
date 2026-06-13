@@ -1,0 +1,44 @@
+# dependencies
+/node_modules
+.pnpm-store/
+
+# next.js
+/.next/
+/out/
+/build
+next-env.d.ts
+
+# production
+/dist
+
+# env files (never commit secrets)
+.env
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# local-only archive of legacy site + source resumes (not part of the OSS artifact)
+/_archive/
+
+# testing / coverage
+/coverage
+
+# misc
+.DS_Store
+*.pem
+*.tsbuildinfo
+
+# debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# editor / IDE
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# deploy
+.vercel
