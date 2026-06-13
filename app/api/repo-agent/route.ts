@@ -119,7 +119,10 @@ export async function POST(req: Request): Promise<Response> {
     },
     execute: async ({ writer }) => {
       writer.write({ type: "start" });
-      let producedContent = false;
+      // "Visible" = a real answer delta or a completed tool output. Reasoning or a
+      // half-formed tool call doesn't count, so a model that only reasoned and
+      // then errored (e.g. a malformed tool name) still falls back cleanly.
+      let producedVisible = false;
 
       try {
         for (const modelId of modelChain) {
@@ -151,16 +154,18 @@ export async function POST(req: Request): Promise<Response> {
               modelErrored = true;
               continue; // don't forward the masked error; decide after the stream
             }
-            producedContent = true;
+            if (chunk.type === "text-delta" || chunk.type === "tool-output-available") {
+              producedVisible = true;
+            }
             writer.write(chunk);
           }
 
           if (!modelErrored) break; // clean finish
-          if (producedContent) break; // partial output already streamed — don't double up
+          if (producedVisible) break; // real output already streamed — don't double up
           // else fall through to the next model in the chain
         }
 
-        if (!producedContent) {
+        if (!producedVisible) {
           const id = "answer";
           writer.write({ type: "text-start", id });
           writer.write({
