@@ -10,6 +10,7 @@ import { getChatModel, resolveModelChain } from "@/lib/ai/llm";
 import { buildContextBlock, buildSystemPrompt } from "@/lib/ai/prompt";
 import { documentCount, retrieve } from "@/lib/ai/retrieve";
 import { chatRequestSchema, latestUserText, trimToUserStart } from "@/lib/ai/validate";
+import { fail } from "@/lib/api/errors";
 import type { ChatSource, ChatUIMessage } from "@/lib/chat-types";
 import { getClientIp } from "@/lib/security/client-ip";
 import { isAllowedOrigin } from "@/lib/security/origin";
@@ -22,10 +23,6 @@ export const dynamic = "force-dynamic";
 export const maxDuration = 30;
 
 const HISTORY_LIMIT = 12; // ~6 turns of context handed to the model
-
-function fail(code: string, message: string, status: number, headers?: HeadersInit): Response {
-  return Response.json({ error: { code, message } }, { status, headers });
-}
 
 export async function POST(req: Request): Promise<Response> {
   // --- Security pipeline (fail fast, cheapest checks first) ---

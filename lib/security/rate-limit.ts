@@ -12,21 +12,47 @@ interface Bucket {
   windowSec: number;
 }
 
-function buckets(ip: string): Bucket[] {
+/**
+ * Per-route overrides. A `scope` namespaces the per-IP buckets (so a heavier
+ * route can run tighter per-IP limits without touching chat's budget), and an
+ * optional `globalDailyCap` adds a route-scoped global sub-cap. The shared
+ * `global:day` backstop — the real spend cap — is ALWAYS counted regardless.
+ */
+export interface RateLimitOptions {
+  scope?: string;
+  perIpMin?: number;
+  perIpDay?: number;
+  globalDailyCap?: number;
+}
+
+function buckets(ip: string, opts?: RateLimitOptions): Bucket[] {
   const now = Math.floor(Date.now() / 1000);
   const minWindow = Math.floor(now / 60);
   const dayWindow = Math.floor(now / 86_400);
   // `Number(x) || default`: a non-numeric env parses to NaN, and `count > NaN`
   // is always false — which would silently DISABLE the limit. Fall back to the
-  // default instead (matches the chat route's max-tokens guard).
-  const perIpMin = Number(process.env.RL_PER_IP_PER_MIN) || 8;
-  const perIpDay = Number(process.env.RL_PER_IP_PER_DAY) || 60;
+  // default instead (matches the chat route's max-tokens guard). Per-route opts
+  // win when provided; the route is responsible for guarding its own env reads.
+  const perIpMin = opts?.perIpMin ?? (Number(process.env.RL_PER_IP_PER_MIN) || 8);
+  const perIpDay = opts?.perIpDay ?? (Number(process.env.RL_PER_IP_PER_DAY) || 60);
   const globalDay = Number(process.env.GLOBAL_DAILY_CAP) || 300;
-  return [
-    { key: `ip:${ip}:min:${minWindow}`, max: perIpMin, windowSec: 60 },
-    { key: `ip:${ip}:day:${dayWindow}`, max: perIpDay, windowSec: 86_400 },
-    { key: `global:day:${dayWindow}`, max: globalDay, windowSec: 86_400 },
+  const ipPrefix = opts?.scope ? `ip:${opts.scope}` : "ip";
+
+  const list: Bucket[] = [
+    { key: `${ipPrefix}:${ip}:min:${minWindow}`, max: perIpMin, windowSec: 60 },
+    { key: `${ipPrefix}:${ip}:day:${dayWindow}`, max: perIpDay, windowSec: 86_400 },
   ];
+  // Optional per-route global sub-cap keeps one feature from draining the shared cap.
+  if (opts?.scope && opts.globalDailyCap != null) {
+    list.push({
+      key: `global:${opts.scope}:day:${dayWindow}`,
+      max: opts.globalDailyCap,
+      windowSec: 86_400,
+    });
+  }
+  // Shared global daily backstop (the spend cap) — counted for every route.
+  list.push({ key: `global:day:${dayWindow}`, max: globalDay, windowSec: 86_400 });
+  return list;
 }
 
 export interface RateLimitResult {
@@ -35,9 +61,12 @@ export interface RateLimitResult {
   scope?: string;
 }
 
-export async function checkRateLimits(ip: string): Promise<RateLimitResult> {
+export async function checkRateLimits(
+  ip: string,
+  opts?: RateLimitOptions,
+): Promise<RateLimitResult> {
   const pool = getPool();
-  for (const b of buckets(ip)) {
+  for (const b of buckets(ip, opts)) {
     // Atomic increment: one statement, no read-modify-write race under concurrency.
     const { rows } = await pool.query<{ count: number }>(
       `INSERT INTO rate_limits (bucket_key, count, expires_at)

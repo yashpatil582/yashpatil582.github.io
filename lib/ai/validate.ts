@@ -17,6 +17,23 @@ export const chatRequestSchema = z.object({
   turnstileToken: z.string().max(8192).optional(),
 });
 
+// Repo-agent envelope: the chat-style message array plus the target repo. The
+// repo URL is validated for shape here; host allow-listing + parsing happens in
+// the route via parseRepoUrl.
+export const repoAgentRequestSchema = z.object({
+  messages: z
+    .array(
+      z.object({
+        role: z.enum(["system", "user", "assistant"]),
+        parts: z.array(z.object({ type: z.string() })).max(50),
+      }),
+    )
+    .min(1)
+    .max(50),
+  repoUrl: z.string().min(1).max(300),
+  turnstileToken: z.string().max(8192).optional(),
+});
+
 export type TextLikePart = { type: string; text?: unknown };
 export type MessageLike = { role: string; parts?: TextLikePart[] };
 
