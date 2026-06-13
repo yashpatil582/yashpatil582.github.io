@@ -90,16 +90,25 @@ export function Projects() {
                     <SocialGlyph name="github" className="size-4" /> Code
                   </a>
                 )}
-                {p.demo && (
-                  <a
-                    href={p.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}
-                  >
-                    Demo <ArrowUpRight className="size-4" />
-                  </a>
-                )}
+                {p.demo &&
+                  (p.demo.startsWith("#") ? (
+                    // Same-page live demo — scroll, don't open a new tab.
+                    <a
+                      href={p.demo}
+                      className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}
+                    >
+                      Live demo <ArrowUpRight className="size-4" />
+                    </a>
+                  ) : (
+                    <a
+                      href={p.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}
+                    >
+                      Demo <ArrowUpRight className="size-4" />
+                    </a>
+                  ))}
               </CardFooter>
             )}
           </Card>

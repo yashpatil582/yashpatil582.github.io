@@ -3,6 +3,7 @@ import { About } from "@/components/sections/about";
 import { Experience } from "@/components/sections/experience";
 import { Projects } from "@/components/sections/projects";
 import { ChatCta } from "@/components/sections/chat-cta";
+import { RepoAgentCta } from "@/components/sections/repo-agent-cta";
 import { Skills } from "@/components/sections/skills";
 import { Contact } from "@/components/sections/contact";
 
@@ -14,6 +15,7 @@ export default function Home() {
       <Experience />
       <Projects />
       <ChatCta />
+      <RepoAgentCta />
       <Skills />
       <Contact />
     </>

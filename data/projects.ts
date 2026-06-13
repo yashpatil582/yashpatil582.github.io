@@ -17,6 +17,8 @@ export const projects: Project[] = [
     tech: ["TypeScript", "MCP", "LLM", "Agents"],
     categories: ["Agents", "LLM"],
     repo: `${GH}/repomind`,
+    // Live, in-page demo of the same idea — see the "Explore any repo" section.
+    demo: "#repo-agent",
     featured: true,
   },
   {
