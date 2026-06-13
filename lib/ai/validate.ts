@@ -1,0 +1,41 @@
+import { z } from "zod";
+
+// Light envelope validation: enough to reject garbage and bound size, without
+// stripping the AI SDK's UIMessage fields (we hand the ORIGINAL messages to
+// convertToModelMessages, not the parsed copy).
+export const chatRequestSchema = z.object({
+  messages: z
+    .array(
+      z.object({
+        role: z.enum(["system", "user", "assistant"]),
+        parts: z.array(z.object({ type: z.string() })).max(50),
+      }),
+    )
+    .min(1)
+    .max(50),
+  turnstileToken: z.string().max(8192).optional(),
+});
+
+export type TextLikePart = { type: string; text?: unknown };
+export type MessageLike = { role: string; parts?: TextLikePart[] };
+
+/** Concatenated text of the most recent user turn — drives retrieval. */
+export function latestUserText(messages: readonly MessageLike[]): string {
+  for (let i = messages.length - 1; i >= 0; i--) {
+    const m = messages[i];
+    if (m.role !== "user" || !Array.isArray(m.parts)) continue;
+    const text = m.parts
+      .filter((p) => p.type === "text" && typeof p.text === "string")
+      .map((p) => p.text as string)
+      .join(" ")
+      .trim();
+    if (text) return text;
+  }
+  return "";
+}
+
+/** Trim leading assistant turns so the model history starts with a user turn. */
+export function trimToUserStart<T extends MessageLike>(messages: T[]): T[] {
+  const start = messages.findIndex((m) => m.role === "user");
+  return start <= 0 ? messages : messages.slice(start);
+}
