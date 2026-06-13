@@ -56,6 +56,24 @@ bge-small) — no key, no network. Re-run `pnpm db:reset` whenever you edit `dat
 Already running Postgres on 5432? Add a `docker-compose.override.yml` mapping the
 db to a free port and update `DATABASE_URL`.
 
+### "Explore any repo" — MCP repo agent
+
+A second, separate agent (`#repo-agent` / `app/api/repo-agent`) takes a **public**
+GitHub repo and explains what it does and how it's built, **streaming its tool
+calls live**. It demonstrates the agent loop and the **MCP protocol** end to end:
+a real in-process MCP server (`lib/mcp/repo-server.ts`) exposes read-only
+repo-exploration tools (`get_repo_metadata`, `list_repo_tree`, `read_readme`,
+`read_file`) backed by the GitHub REST API; the route bridges those tools to the
+model over a linked in-memory transport (`lib/mcp/bridge.ts`) — a genuine
+`initialize` → `tools/list` → `tools/call` handshake — and runs the loop through
+the **same** model adapter and security envelope as Chat.
+
+It needs no extra setup beyond Stage 1 (it reuses `GROQ_API_KEY` + the security
+config). Each tool is closure-bound to one repo, redirects are disabled, paths are
+sanitized, and repo contents are treated as **untrusted data** — so the agent can
+only ever perform read-only, single-repo GitHub reads. Set an optional server-side
+`GITHUB_TOKEN` to lift the GitHub API limit (60/hr → 5000/hr); recommended in prod.
+
 ## How content works
 
 All site content lives in one typed source of truth under [`data/`](./data) —
@@ -72,13 +90,17 @@ components/
   sections/          # Page sections (hero, about, experience, projects, …)
   ui/                # shadcn/ui primitives
   chat/              # "Chat with Yash" client (streaming UI, sources, Turnstile)
+  repo-agent/        # "Explore any repo" client (URL input, live tool timeline)
 data/                # Single source of truth for all content
 public/              # Profile image, résumé PDF, favicon
 lib/
-  ai/                # Provider-agnostic LLM + embeddings adapters, retrieval, prompt
+  ai/                # Provider-agnostic LLM + embeddings adapters, retrieval, prompts
+  mcp/               # In-process MCP repo server, GitHub client, AI-SDK bridge
   db/                # pgvector client, schema, migrate
   security/          # origin allow-list, Turnstile, rate limit, client IP
+  api/               # Shared API helpers (error response)
 app/api/chat/        # The secured RAG route (Node runtime, SSE streaming)
+app/api/repo-agent/  # The secured MCP repo-agent route (tool-call streaming)
 scripts/             # ingest.ts — builds the RAG index from data/*
 _archive/            # Legacy static site + source résumés (gitignored, local)
 ```
@@ -96,13 +118,15 @@ monthly spend caps in every provider dashboard.
 
 Copy [`.env.example`](./.env.example) to `.env.local` and fill what you need.
 Stage 0 needs nothing but an optional `NEXT_PUBLIC_SITE_URL`. Stage 1 adds
-`GROQ_API_KEY`, `DATABASE_URL`, and the Turnstile keys (all server-side).
+`GROQ_API_KEY`, `DATABASE_URL`, and the Turnstile keys (all server-side). Stage 2
+(MCP repo agent) reuses those and adds only an **optional** server-side
+`GITHUB_TOKEN` plus tunable abuse caps (`REPO_AGENT_*`, `RL_REPO_*`).
 
 ## Roadmap
 
 - **Stage 0 ✓** — host-agnostic Next.js app, MIT-licensed, Docker, content layer.
 - **Stage 1 ✓** — "Chat with Yash" RAG (open-weight model + pgvector) via secured proxy.
-- **Stage 2** — voice agent, live eval/hallucination demo, MCP repo agent, vision; publish Agent Skills.
+- **Stage 2** — MCP repo agent ✓ ("Explore any repo"); voice agent, live eval/hallucination demo, vision; publish Agent Skills.
 - **Stage 3** — engineering blog posts (secure live-AI build, eval methodology, MCP agent design).
 
 ## License
