@@ -2,6 +2,7 @@
 // retrievable RAG documents. Relative imports so `tsx` runs this with no path-alias
 // resolver. One document per entity: the corpus is tiny, so no chunk-splitting.
 
+import { agentSkills } from "../../data/agent-skills";
 import { education } from "../../data/education";
 import { experience } from "../../data/experience";
 import { profile } from "../../data/profile";
@@ -9,7 +10,7 @@ import { projects } from "../../data/projects";
 import { skills } from "../../data/skills";
 
 export interface IngestDoc {
-  type: "profile" | "experience" | "project" | "skill" | "education";
+  type: "profile" | "experience" | "project" | "skill" | "education" | "agent_skill";
   source_label: string;
   anchor: string;
   content: string;
@@ -81,6 +82,19 @@ export function buildDocuments(): IngestDoc[] {
       anchor: "#skills",
       content: `${g.name}: ${g.skills.join(", ")}.`,
       metadata: { group: g.name },
+    }),
+  );
+
+  agentSkills.forEach((s) =>
+    docs.push({
+      type: "agent_skill",
+      source_label: `Agent Skill — ${s.name}`,
+      anchor: "#agent-skills",
+      content:
+        `${s.name} is a published Anthropic Agent Skill (SKILL.md). ${s.description} ` +
+        `It packages ${s.packages} Tech: ${s.tech.join(", ")}. License: ${s.license}. ` +
+        `Source: ${s.repo}.`,
+      metadata: { slug: s.slug, repo: s.repo, license: s.license, tech: s.tech },
     }),
   );
 

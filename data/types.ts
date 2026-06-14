@@ -86,3 +86,25 @@ export interface SkillGroup {
   name: string;
   skills: string[];
 }
+
+/**
+ * A published Anthropic Agent Skill (SKILL.md) packaging a method from real work.
+ * Lives in the dedicated public `agent-skills` repo; surfaced on the site and fed
+ * to the RAG index from this single source of truth.
+ */
+export interface AgentSkill {
+  /** Stable id; equals the skill's directory name and SKILL.md `name`. */
+  slug: string;
+  name: string;
+  /** One line: what the skill does. */
+  description: string;
+  /** Which real project/method it packages. */
+  packages: string;
+  tech: string[];
+  /** SPDX-ish license id, e.g. "MIT" or "Apache-2.0". */
+  license: string;
+  /** Deep link to the skill directory on GitHub. */
+  repo: string;
+  /** The live demo or project this skill maps to. `href` may be a `#anchor`. */
+  mapsTo: { label: string; href: string };
+}
