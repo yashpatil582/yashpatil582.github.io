@@ -45,6 +45,9 @@ export function assertProductionConfig(): void {
     "RL_REPO_PER_IP_PER_MIN",
     "RL_REPO_PER_IP_PER_DAY",
     "RL_REPO_GLOBAL_DAILY",
+    "RL_EVAL_PER_IP_PER_MIN",
+    "RL_EVAL_PER_IP_PER_DAY",
+    "RL_EVAL_GLOBAL_DAILY",
   ]) {
     const raw = process.env[name]?.trim();
     if (!raw) continue; // unset → the code falls back to a safe default
@@ -58,7 +61,7 @@ export function assertProductionConfig(): void {
 
   if (problems.length > 0) {
     throw new Error(
-      "Refusing to start: insecure production configuration for the /api/chat route.\n" +
+      "Refusing to start: insecure production configuration for the public AI routes.\n" +
         problems.map((p) => `  • ${p}`).join("\n") +
         "\nFix these env vars (see .env.example), or run with NODE_ENV=development for local testing.",
     );

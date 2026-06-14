@@ -9,7 +9,9 @@ export const chatRequestSchema = z.object({
       z.object({
         role: z.enum(["system", "user", "assistant"]),
         // Cap each part's text so a single giant text part can't inflate input cost.
-        parts: z.array(z.object({ type: z.string(), text: z.string().max(8000).optional() })).max(50),
+        parts: z
+          .array(z.object({ type: z.string(), text: z.string().max(8000).optional() }))
+          .max(50),
       }),
     )
     .min(1)
@@ -26,12 +28,33 @@ export const repoAgentRequestSchema = z.object({
       z.object({
         role: z.enum(["system", "user", "assistant"]),
         // Same per-part text cap as chat — one giant text part can't inflate cost.
-        parts: z.array(z.object({ type: z.string(), text: z.string().max(8000).optional() })).max(50),
+        parts: z
+          .array(z.object({ type: z.string(), text: z.string().max(8000).optional() }))
+          .max(50),
       }),
     )
     .min(1)
     .max(50),
   repoUrl: z.string().min(1).max(300),
+  turnstileToken: z.string().max(8192).optional(),
+});
+
+// Eval envelope: single-shot, one user turn carrying the (synthetic) clinical note.
+// Tighter per-part cap than chat/repo (6000 vs 8000) because the note is sent to the
+// model TWICE (extraction + grounding), so cost doubles per character. One turn only —
+// the eval has no conversation history.
+export const evalRequestSchema = z.object({
+  messages: z
+    .array(
+      z.object({
+        role: z.enum(["system", "user", "assistant"]),
+        parts: z
+          .array(z.object({ type: z.string(), text: z.string().max(6000).optional() }))
+          .max(4),
+      }),
+    )
+    .min(1)
+    .max(2),
   turnstileToken: z.string().max(8192).optional(),
 });
 
