@@ -293,8 +293,10 @@ export function EvalResults({
 
       {result && (
         <p className="text-muted-foreground/70 text-xs">
-          Extracted by <span className="text-foreground font-medium">{result.extractedBy}</span> ·
-          graded by <span className="text-foreground font-medium">{result.gradedBy}</span>
+          Two separate passes — extraction:{" "}
+          <span className="text-foreground font-medium">{result.extractedBy}</span> · grounding:{" "}
+          <span className="text-foreground font-medium">{result.gradedBy}</span> · score verified in
+          code
         </p>
       )}
 

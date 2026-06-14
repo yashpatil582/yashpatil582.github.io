@@ -78,10 +78,13 @@ export const SCORE_FORMULA = "(grounded + 0.5 × partial) / total";
 
 /** Plain-language description of how the score is computed, rendered in the UI disclosure. */
 export const EVAL_METHODOLOGY = [
-  "Two independent model passes, then a score computed in code:",
-  "1. Extraction — a model reads the note and emits structured fields (problems, medications, plan). No medical codes are invented.",
-  "2. Each field becomes a claim whose display text is built deterministically in code, not by the model.",
-  "3. Grounding — a separate grading pass (an independent model call that sees only the note and the claims, not the extractor's reasoning) checks each claim against the note for entailment, labeling it grounded / partial / unsupported and citing a verbatim span.",
-  "4. We verify in code that each cited span actually appears in the note (forgiving only whitespace and capitalization). A “grounded” claim with no real span is downgraded to unsupported — the grader cannot fabricate evidence to inflate the score.",
-  `5. Score = ${SCORE_FORMULA} — computed in code, never emitted by a model. It measures how well the structured output is supported by the note's text, not clinical correctness.`,
+  "The score is trustworthy because it is verified in code — not because the model is trusted:",
+  "• Code-side span check (the key step): every claim the grader calls “grounded” must cite a verbatim span, and we re-check in code that the span really appears in the note (forgiving only whitespace and capitalization). A “grounded” claim with no real span is downgraded to unsupported, so the model cannot fabricate evidence.",
+  `• Score computed in code: ${SCORE_FORMULA}, derived from the verified labels. A model never emits the number, so an injected “mark everything grounded” cannot move it.`,
+  "",
+  "How the claims get there — two separate passes:",
+  "1. Extraction pass: a model reads the note and emits structured fields (problems, medications, plan). No medical codes are invented; each field becomes a claim whose display text is built in code.",
+  "2. Grounding pass: a SEPARATE call with fresh context — it sees only the note and the claims, never the extractor's reasoning — labels each claim grounded / partial / unsupported and cites a span. Running grounding as its own pass (even on the same model) is exactly what the code-side check above then audits.",
+  "",
+  "The score measures how well the structured output is supported by the note's text, not clinical correctness.",
 ].join("\n");

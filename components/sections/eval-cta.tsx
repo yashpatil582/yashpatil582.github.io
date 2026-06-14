@@ -15,7 +15,7 @@ export function EvalCta() {
       id="eval"
       eyebrow="Clinical eval"
       title="Score a note for hallucinations"
-      description="Paste a synthetic clinical note. One model extracts a structured, FHIR-ish summary (problems, medications, plan); a separate grader checks every extracted claim against the source note and labels it grounded, partial, or unsupported. The grounding score is computed in code from those labels — the methodology is shown, not hidden."
+      description="Paste a synthetic clinical note. An extraction pass produces a structured, FHIR-ish summary (problems, medications, plan); a separate grounding pass labels every extracted claim grounded, partial, or unsupported and cites a span. Then code — not the model — verifies each span against the note and computes the score, so the number can't be gamed. The methodology is shown, not hidden."
     >
       <div className="border-border bg-card relative overflow-hidden rounded-2xl border p-4 sm:p-6">
         <div
