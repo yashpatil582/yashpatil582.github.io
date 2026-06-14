@@ -35,6 +35,20 @@ export function assertProductionConfig(): void {
     problems.push("ALLOWED_ORIGINS still contains localhost — set your production origin(s).");
   }
 
+  // Numeric abuse caps: if set, they must parse as a positive number. A
+  // non-numeric value NaN-s out at runtime and silently disables that limit, so
+  // we refuse to boot on it — same fail-closed philosophy as the Turnstile guard.
+  for (const name of ["RL_PER_IP_PER_MIN", "RL_PER_IP_PER_DAY", "GLOBAL_DAILY_CAP"]) {
+    const raw = process.env[name]?.trim();
+    if (!raw) continue; // unset → the code falls back to a safe default
+    const n = Number(raw);
+    if (!Number.isFinite(n) || n <= 0) {
+      problems.push(
+        `${name} is "${raw}", which isn't a positive number — a non-numeric cap would disable that rate limit.`,
+      );
+    }
+  }
+
   if (problems.length > 0) {
     throw new Error(
       "Refusing to start: insecure production configuration for the /api/chat route.\n" +

@@ -8,7 +8,8 @@ export const chatRequestSchema = z.object({
     .array(
       z.object({
         role: z.enum(["system", "user", "assistant"]),
-        parts: z.array(z.object({ type: z.string() })).max(50),
+        // Cap each part's text so a single giant text part can't inflate input cost.
+        parts: z.array(z.object({ type: z.string(), text: z.string().max(8000).optional() })).max(50),
       }),
     )
     .min(1)

@@ -16,9 +16,12 @@ function buckets(ip: string): Bucket[] {
   const now = Math.floor(Date.now() / 1000);
   const minWindow = Math.floor(now / 60);
   const dayWindow = Math.floor(now / 86_400);
-  const perIpMin = Number(process.env.RL_PER_IP_PER_MIN ?? 8);
-  const perIpDay = Number(process.env.RL_PER_IP_PER_DAY ?? 60);
-  const globalDay = Number(process.env.GLOBAL_DAILY_CAP ?? 300);
+  // `Number(x) || default`: a non-numeric env parses to NaN, and `count > NaN`
+  // is always false — which would silently DISABLE the limit. Fall back to the
+  // default instead (matches the chat route's max-tokens guard).
+  const perIpMin = Number(process.env.RL_PER_IP_PER_MIN) || 8;
+  const perIpDay = Number(process.env.RL_PER_IP_PER_DAY) || 60;
+  const globalDay = Number(process.env.GLOBAL_DAILY_CAP) || 300;
   return [
     { key: `ip:${ip}:min:${minWindow}`, max: perIpMin, windowSec: 60 },
     { key: `ip:${ip}:day:${dayWindow}`, max: perIpDay, windowSec: 86_400 },

@@ -21,12 +21,19 @@ export async function verifyTurnstile(token: string, ip: string): Promise<boolea
   const body = new URLSearchParams({ secret, response: token });
   if (ip && ip !== "0.0.0.0") body.set("remoteip", ip);
 
+  // Fail CLOSED on a slow/unreachable Cloudflare: a ~3s timeout aborts the
+  // request, and the catch treats the abort as unverified — siteverify can't
+  // stall the route.
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 3000);
   try {
-    const res = await fetch(VERIFY_URL, { method: "POST", body });
+    const res = await fetch(VERIFY_URL, { method: "POST", body, signal: controller.signal });
     const data = (await res.json()) as { success?: boolean };
     return data.success === true;
   } catch (err) {
-    console.error("[turnstile] verification request failed", err);
+    console.error("[turnstile] verification request failed or timed out", err);
     return false;
+  } finally {
+    clearTimeout(timeout);
   }
 }
