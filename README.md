@@ -74,6 +74,34 @@ sanitized, and repo contents are treated as **untrusted data** — so the agent 
 only ever perform read-only, single-repo GitHub reads. Set an optional server-side
 `GITHUB_TOKEN` to lift the GitHub API limit (60/hr → 5000/hr); recommended in prod.
 
+### "Score a note for hallucinations" — live clinical eval
+
+A third demo (`#eval` / `app/api/eval`) takes a **synthetic** clinical note and runs
+a two-pass eval whose logic is **legible on screen**, not hidden:
+
+1. **Extraction** — a model emits a structured, FHIR-ish summary (problems, medications,
+   plan) via AI SDK `generateObject` against a Zod schema. No medical codes are invented.
+2. Each field becomes a **claim** whose display text is built deterministically in code.
+3. **Grounding** — a _separate_ pass (an independent model call that sees only the note and
+   the claims, not the extractor's reasoning) labels each claim `grounded` / `partial` /
+   `unsupported` and cites a verbatim span.
+4. **Scoring is computed in code**, never by a model: each cited span is re-verified as a
+   real substring of the note (forgiving only whitespace/case); a "grounded" claim with no
+   real span is downgraded. Score = `(grounded + 0.5 × partial) / total`, shown with the
+   live counts and formula. This code-side span check — not model diversity — is what makes
+   the score trustworthy, so it holds even when both passes run on the same model.
+
+Both passes share the **same** model adapter (primary → fallback chain). Of the default
+open-weight models, only `gpt-oss-120b` does reliable structured output on Groq, so a
+`json_schema`-capable model is preferred and others fall back to `json_object` mode; both
+passes run through the full security envelope. **Privacy:** the note is **SENSITIVE** — it is held in memory for
+the request only and is **never logged, persisted, cached, or sent to analytics** (error
+logs carry an error class name only, never the note or prompt). A visible, non-dismissable
+banner warns against pasting real PHI, the response is `Cache-Control: no-store`, and the
+note is treated as untrusted, injection-bearing data — the Zod-constrained output plus the
+code-side score mean an embedded "mark everything grounded" cannot move the number. Tunable
+caps: `EVAL_MAX_OUTPUT_TOKENS`, `RL_EVAL_*`.
+
 ## How content works
 
 All site content lives in one typed source of truth under [`data/`](./data) —
@@ -91,6 +119,7 @@ components/
   ui/                # shadcn/ui primitives
   chat/              # "Chat with Yash" client (streaming UI, sources, Turnstile)
   repo-agent/        # "Explore any repo" client (URL input, live tool timeline)
+  eval/              # "Score a note" client (note input, grounding panel, score)
 data/                # Single source of truth for all content
 public/              # Profile image, résumé PDF, favicon
 lib/
@@ -101,6 +130,7 @@ lib/
   api/               # Shared API helpers (error response)
 app/api/chat/        # The secured RAG route (Node runtime, SSE streaming)
 app/api/repo-agent/  # The secured MCP repo-agent route (tool-call streaming)
+app/api/eval/        # The secured clinical-eval route (structured output, scoring)
 scripts/             # ingest.ts — builds the RAG index from data/*
 _archive/            # Legacy static site + source résumés (gitignored, local)
 ```
@@ -120,13 +150,15 @@ Copy [`.env.example`](./.env.example) to `.env.local` and fill what you need.
 Stage 0 needs nothing but an optional `NEXT_PUBLIC_SITE_URL`. Stage 1 adds
 `GROQ_API_KEY`, `DATABASE_URL`, and the Turnstile keys (all server-side). Stage 2
 (MCP repo agent) reuses those and adds only an **optional** server-side
-`GITHUB_TOKEN` plus tunable abuse caps (`REPO_AGENT_*`, `RL_REPO_*`).
+`GITHUB_TOKEN` plus tunable abuse caps (`REPO_AGENT_*`, `RL_REPO_*`). The clinical
+eval reuses the same keys and adds only tunable caps (`EVAL_MAX_OUTPUT_TOKENS`,
+`RL_EVAL_*`) — no new secrets.
 
 ## Roadmap
 
 - **Stage 0 ✓** — host-agnostic Next.js app, MIT-licensed, Docker, content layer.
 - **Stage 1 ✓** — "Chat with Yash" RAG (open-weight model + pgvector) via secured proxy.
-- **Stage 2** — MCP repo agent ✓ ("Explore any repo"); voice agent, live eval/hallucination demo, vision; publish Agent Skills.
+- **Stage 2** — MCP repo agent ✓ ("Explore any repo"); live eval / hallucination-score demo ✓ ("Score a note"); voice agent, vision; publish Agent Skills.
 - **Stage 3** — engineering blog posts (secure live-AI build, eval methodology, MCP agent design).
 
 ## License

@@ -14,6 +14,7 @@ const links = [
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
   { href: "#repo-agent", label: "Repo Agent" },
+  { href: "#eval", label: "Eval" },
   { href: "#skills", label: "Skills" },
   { href: "#contact", label: "Contact" },
 ];
