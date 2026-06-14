@@ -38,7 +38,14 @@ export function assertProductionConfig(): void {
   // Numeric abuse caps: if set, they must parse as a positive number. A
   // non-numeric value NaN-s out at runtime and silently disables that limit, so
   // we refuse to boot on it — same fail-closed philosophy as the Turnstile guard.
-  for (const name of ["RL_PER_IP_PER_MIN", "RL_PER_IP_PER_DAY", "GLOBAL_DAILY_CAP"]) {
+  for (const name of [
+    "RL_PER_IP_PER_MIN",
+    "RL_PER_IP_PER_DAY",
+    "GLOBAL_DAILY_CAP",
+    "RL_REPO_PER_IP_PER_MIN",
+    "RL_REPO_PER_IP_PER_DAY",
+    "RL_REPO_GLOBAL_DAILY",
+  ]) {
     const raw = process.env[name]?.trim();
     if (!raw) continue; // unset → the code falls back to a safe default
     const n = Number(raw);

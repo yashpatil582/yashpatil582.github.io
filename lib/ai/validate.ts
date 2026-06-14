@@ -25,7 +25,8 @@ export const repoAgentRequestSchema = z.object({
     .array(
       z.object({
         role: z.enum(["system", "user", "assistant"]),
-        parts: z.array(z.object({ type: z.string() })).max(50),
+        // Same per-part text cap as chat — one giant text part can't inflate cost.
+        parts: z.array(z.object({ type: z.string(), text: z.string().max(8000).optional() })).max(50),
       }),
     )
     .min(1)

@@ -69,9 +69,10 @@ export async function POST(req: Request): Promise<Response> {
   //    sub-cap, all still under the shared global daily spend backstop.
   const rl = await checkRateLimits(ip, {
     scope: "repo",
-    perIpMin: Number(process.env.RL_REPO_PER_IP_PER_MIN ?? 3),
-    perIpDay: Number(process.env.RL_REPO_PER_IP_PER_DAY ?? 20),
-    globalDailyCap: Number(process.env.RL_REPO_GLOBAL_DAILY ?? 150),
+    // `Number(x) || default`: a non-numeric env must fall back, never disable the limit.
+    perIpMin: Number(process.env.RL_REPO_PER_IP_PER_MIN) || 3,
+    perIpDay: Number(process.env.RL_REPO_PER_IP_PER_DAY) || 20,
+    globalDailyCap: Number(process.env.RL_REPO_GLOBAL_DAILY) || 150,
   });
   if (!rl.ok) {
     return fail("rate_limited", "Too many repo explorations right now. Try again shortly.", 429, {
