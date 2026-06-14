@@ -9,7 +9,7 @@ CREATE EXTENSION IF NOT EXISTS vector;
 -- single source of truth — this table is rebuilt from them by scripts/ingest.ts.
 CREATE TABLE IF NOT EXISTS documents (
   id           BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  type         TEXT        NOT NULL,            -- profile | experience | project | skill | education
+  type         TEXT        NOT NULL,            -- profile | experience | project | skill | education | agent_skill
   source_label TEXT        NOT NULL,            -- chip label, e.g. "Repomind"
   anchor       TEXT        NOT NULL,            -- section anchor, e.g. #projects
   content      TEXT        NOT NULL,            -- the retrievable, human-readable text

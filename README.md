@@ -158,7 +158,7 @@ eval reuses the same keys and adds only tunable caps (`EVAL_MAX_OUTPUT_TOKENS`,
 
 - **Stage 0 ✓** — host-agnostic Next.js app, MIT-licensed, Docker, content layer.
 - **Stage 1 ✓** — "Chat with Yash" RAG (open-weight model + pgvector) via secured proxy.
-- **Stage 2** — MCP repo agent ✓ ("Explore any repo"); live eval / hallucination-score demo ✓ ("Score a note"); voice agent, vision; publish Agent Skills.
+- **Stage 2** — MCP repo agent ✓ ("Explore any repo"); live eval / hallucination-score demo ✓ ("Score a note"); Agent Skills ✓ ([`agent-skills`](https://github.com/yashpatil582/agent-skills): `clinical-note-eval` + `token-eval-harness`); voice agent, vision.
 - **Stage 3** — engineering blog posts (secure live-AI build, eval methodology, MCP agent design).
 
 ## License
