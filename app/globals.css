@@ -12,6 +12,13 @@
   --font-heading: var(--font-sans);
   --color-brand: var(--brand);
   --color-brand-foreground: var(--brand-foreground);
+  --color-hairline: var(--hairline);
+  --color-hairline-strong: var(--hairline-strong);
+  --color-status-ok: var(--status-ok);
+  --color-status-warn: var(--status-warn);
+  --shadow-elev-sm: var(--elev-sm);
+  --shadow-elev-md: var(--elev-md);
+  --shadow-elev-lg: var(--elev-lg);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -72,6 +79,14 @@
   /* Brand accent — restrained indigo/violet, used for highlights not chrome. */
   --brand: oklch(0.54 0.21 277);
   --brand-foreground: oklch(0.985 0 0);
+  /* Instrument vocabulary: hairlines, quiet status hues, elevation. */
+  --hairline: oklch(0.145 0 0 / 12%);
+  --hairline-strong: oklch(0.145 0 0 / 20%);
+  --status-ok: oklch(0.58 0.13 158);
+  --status-warn: oklch(0.62 0.12 75);
+  --elev-sm: 0 1px 2px oklch(0 0 0 / 0.06), 0 1px 1px oklch(0 0 0 / 0.04);
+  --elev-md: 0 2px 4px -1px oklch(0 0 0 / 0.07), 0 8px 24px -6px oklch(0 0 0 / 0.1);
+  --elev-lg: 0 4px 8px -2px oklch(0 0 0 / 0.08), 0 16px 40px -8px oklch(0 0 0 / 0.12);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -110,6 +125,17 @@
   /* Brighter, more luminous brand in dark mode. */
   --brand: oklch(0.72 0.17 274);
   --brand-foreground: oklch(0.18 0 0);
+  /* Instrument vocabulary: hairlines, quiet status hues, elevation. */
+  --hairline: oklch(1 0 0 / 14%);
+  --hairline-strong: oklch(1 0 0 / 22%);
+  --status-ok: oklch(0.74 0.13 158);
+  --status-warn: oklch(0.8 0.11 78);
+  --elev-sm: 0 1px 2px oklch(0 0 0 / 0.3), inset 0 1px 0 oklch(1 0 0 / 0.04);
+  --elev-md:
+    0 2px 4px oklch(0 0 0 / 0.3), 0 8px 24px -6px oklch(0 0 0 / 0.4), inset 0 1px 0 oklch(1 0 0 / 0.05);
+  --elev-lg:
+    0 4px 8px oklch(0 0 0 / 0.35), 0 16px 40px -8px oklch(0 0 0 / 0.5),
+    inset 0 1px 0 oklch(1 0 0 / 0.06);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -184,7 +210,83 @@
 .bg-glow {
   background: radial-gradient(
     40% 50% at 50% 0%,
-    color-mix(in oklch, var(--brand) 22%, transparent) 0%,
+    color-mix(in oklch, var(--brand) 16%, transparent) 0%,
     transparent 100%
   );
+}
+
+/* Cursor-following hero spotlight (see HeroSpotlight). Position is driven by the
+   --mx/--my custom properties; defaults render a tasteful centered glow for the
+   static (touch / reduced-motion) state. */
+.hero-spotlight {
+  --mx: 50%;
+  --my: 18%;
+  background: radial-gradient(
+    220px 220px at var(--mx) var(--my),
+    color-mix(in oklch, var(--brand) 20%, transparent),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 700ms ease;
+}
+.hero-spotlight[data-active="true"],
+.hero-spotlight[data-reduce="true"] {
+  opacity: 1;
+}
+
+@layer components {
+  /* House metadata treatment — mono uppercase labels, section indices, status text.
+     Sits in the components layer so utilities (color, size) can still override. */
+  .label-mono {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    line-height: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Faint static ruled grid — "graph paper", masked to fade at the edges.
+     Static (never animated) and GPU-cheap; reserved for the hero backdrop. */
+  .bg-ruled {
+    background-image:
+      linear-gradient(
+        to right,
+        color-mix(in oklch, var(--foreground) 5%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in oklch, var(--foreground) 5%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 72px 72px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000 30%, transparent 100%);
+    mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000 30%, transparent 100%);
+  }
+
+  /* Instrument-panel corner registration marks (top two corners). Parent must be
+     position:relative. One class, trivially removable. */
+  .panel-ticks::before,
+  .panel-ticks::after {
+    content: "";
+    position: absolute;
+    top: 0.625rem;
+    z-index: 1;
+    width: 0.5rem;
+    height: 0.5rem;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+  .panel-ticks::before {
+    left: 0.625rem;
+    border-top: 1px solid var(--hairline-strong);
+    border-left: 1px solid var(--hairline-strong);
+  }
+  .panel-ticks::after {
+    right: 0.625rem;
+    border-top: 1px solid var(--hairline-strong);
+    border-right: 1px solid var(--hairline-strong);
+  }
 }
