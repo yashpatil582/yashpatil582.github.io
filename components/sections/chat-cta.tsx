@@ -24,7 +24,7 @@ export function ChatCta() {
       title="Chat with Yash"
       description="A retrieval-grounded agent that answers questions about my work — running on open-weight models behind a secured proxy."
     >
-      <div className="panel-ticks border-hairline bg-card relative overflow-hidden rounded-2xl border p-4 shadow-elev-md sm:p-6">
+      <div className="surface-glass surface-glass-lit relative overflow-hidden rounded-2xl p-4 sm:p-6">
         <div
           aria-hidden
           className="bg-glow pointer-events-none absolute inset-x-0 top-0 h-40 opacity-40"
@@ -44,7 +44,7 @@ export function ChatCta() {
 
         <ChatAgent suggestions={sampleQuestions} />
 
-        <p className="text-muted-foreground/70 mt-3 flex items-center gap-1.5 text-xs">
+        <p className="text-muted-foreground mt-3 flex items-center gap-1.5 text-xs">
           <Lock className="size-3 shrink-0" /> Open-weight model + pgvector RAG through a
           rate-limited, bot-checked proxy. No API keys in the browser.
         </p>

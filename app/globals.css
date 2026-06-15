@@ -12,6 +12,7 @@
   --font-heading: var(--font-sans);
   --color-brand: var(--brand);
   --color-brand-foreground: var(--brand-foreground);
+  --color-brand-2: var(--brand-2);
   --color-hairline: var(--hairline);
   --color-hairline-strong: var(--hairline-strong);
   --color-status-ok: var(--status-ok);
@@ -69,7 +70,7 @@
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: oklch(0.5 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -87,6 +88,14 @@
   --elev-sm: 0 1px 2px oklch(0 0 0 / 0.06), 0 1px 1px oklch(0 0 0 / 0.04);
   --elev-md: 0 2px 4px -1px oklch(0 0 0 / 0.07), 0 8px 24px -6px oklch(0 0 0 / 0.1);
   --elev-lg: 0 4px 8px -2px oklch(0 0 0 / 0.08), 0 16px 40px -8px oklch(0 0 0 / 0.12);
+  /* Luminous layer: harmonizing cyan-teal partner hue, aurora atmosphere, glass. */
+  --brand-2: oklch(0.58 0.16 232);
+  --brand-2-text: oklch(0.5 0.16 232);
+  --aurora-1: oklch(0.54 0.21 277 / 0.06);
+  --aurora-2: oklch(0.58 0.16 232 / 0.05);
+  --glass-bg: oklch(0.98 0.004 274 / 0.8);
+  --glass-border: oklch(0.145 0 0 / 0.12);
+  --glass-highlight: oklch(1 0 0 / 0.7);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -131,6 +140,14 @@
   --status-ok: oklch(0.74 0.13 158);
   --status-warn: oklch(0.8 0.11 78);
   --elev-sm: 0 1px 2px oklch(0 0 0 / 0.3), inset 0 1px 0 oklch(1 0 0 / 0.04);
+  /* Luminous layer: harmonizing cyan-teal partner hue, aurora atmosphere, glass. */
+  --brand-2: oklch(0.74 0.15 226);
+  --brand-2-text: oklch(0.74 0.15 226);
+  --aurora-1: oklch(0.72 0.17 274 / 0.18);
+  --aurora-2: oklch(0.74 0.15 226 / 0.16);
+  --glass-bg: oklch(0.205 0 0 / 0.55);
+  --glass-border: oklch(1 0 0 / 0.12);
+  --glass-highlight: oklch(1 0 0 / 0.06);
   --elev-md:
     0 2px 4px oklch(0 0 0 / 0.3), 0 8px 24px -6px oklch(0 0 0 / 0.4), inset 0 1px 0 oklch(1 0 0 / 0.05);
   --elev-lg:
@@ -183,16 +200,90 @@
   }
 }
 
-/* Brand gradient text for headline accents. */
+/* Brand gradient text for headline accents — indigo through a cyan-teal midpoint
+   for a subtle iridescence, ending near foreground for legibility. */
 .text-gradient-brand {
   background-image: linear-gradient(
     100deg,
     var(--brand),
+    var(--brand-2-text) 45%,
     color-mix(in oklch, var(--brand) 55%, var(--foreground))
   );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+/* Display headline: mostly foreground for legibility, with a static indigo->cyan
+   sheen. Static (no per-frame repaint) — the gradient reads premium on its own. */
+.headline-gradient {
+  background-image: linear-gradient(
+    100deg,
+    var(--foreground) 0%,
+    color-mix(in oklch, var(--brand) 72%, var(--foreground)) 38%,
+    color-mix(in oklch, var(--brand-2) 72%, var(--foreground)) 54%,
+    var(--foreground) 92%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Aurora atmosphere behind the hero: two harmonizing radial blooms, masked to the
+   top and gently drifting. Compositor-only (transform/filter); frozen under
+   reduced motion by the global block. */
+.bg-aurora {
+  background:
+    radial-gradient(45% 40% at 18% 12%, var(--aurora-1), transparent 70%),
+    radial-gradient(42% 45% at 82% 8%, var(--aurora-2), transparent 70%),
+    radial-gradient(55% 50% at 50% -12%, var(--aurora-1), transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 55% at 50% 0%, #000 35%, transparent 100%);
+  mask-image: radial-gradient(ellipse 85% 55% at 50% 0%, #000 35%, transparent 100%);
+  animation: aurora-drift 26s ease-in-out infinite alternate;
+}
+/* Transform-only drift — compositor-friendly, no per-frame repaint. */
+@keyframes aurora-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(0, -1.5%, 0) scale(1.06);
+  }
+}
+
+/* Frosted-glass surface for elevated shells (demo cards, telemetry panel). */
+.surface-glass {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    inset 0 1px 0 0 var(--glass-highlight),
+    0 1px 2px oklch(0 0 0 / 0.3),
+    0 8px 24px -8px oklch(0 0 0 / 0.35);
+}
+/* Brand-lit hairline edge (indigo->cyan) drawn as a masked border ring. */
+.surface-glass-lit {
+  position: relative;
+}
+.surface-glass-lit::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events: none;
+  background: linear-gradient(100deg, transparent, var(--brand) 38%, var(--brand-2) 62%, transparent);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0.55;
 }
 
 /* Subtle dotted-grid backdrop, masked to fade at the edges. */

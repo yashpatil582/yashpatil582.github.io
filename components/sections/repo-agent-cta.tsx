@@ -18,7 +18,7 @@ export function RepoAgentCta() {
       title="Explore any repo"
       description="Paste a public GitHub repo and a tool-using agent explores it over MCP — listing the tree, reading the README and key files — then explains what it does and how it's built. Its tool calls stream live."
     >
-      <div className="panel-ticks border-hairline bg-card relative overflow-hidden rounded-2xl border p-4 shadow-elev-md sm:p-6">
+      <div className="surface-glass surface-glass-lit relative overflow-hidden rounded-2xl p-4 sm:p-6">
         <div
           aria-hidden
           className="bg-glow pointer-events-none absolute inset-x-0 top-0 h-40 opacity-40"
@@ -38,7 +38,7 @@ export function RepoAgentCta() {
 
         <RepoAgent />
 
-        <p className="text-muted-foreground/70 mt-4 flex items-center gap-1.5 text-xs">
+        <p className="text-muted-foreground mt-4 flex items-center gap-1.5 text-xs">
           <Lock className="size-3 shrink-0" /> Read-only, single-repo tools through a rate-limited,
           bot-checked proxy. Repo contents are treated as untrusted data. No API keys in the browser.
         </p>

@@ -56,7 +56,7 @@ export function Projects() {
 
       <Reveal className="grid gap-5 sm:grid-cols-2">
         {shown.map((p) => (
-          <Card key={p.slug} className={cn("h-full", p.featured && "ring-brand/40")}>
+          <Card key={p.slug} className={cn("h-full", p.featured && "surface-glass-lit")}>
             <CardHeader>
               <div className="flex items-start justify-between gap-2">
                 <CardTitle>{p.name}</CardTitle>

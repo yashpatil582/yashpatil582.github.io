@@ -28,7 +28,7 @@ export function HeroIntro() {
   ) : null;
 
   const name = (
-    <h1 className="font-heading text-4xl font-semibold tracking-[-0.02em] text-balance sm:text-5xl md:text-6xl">
+    <h1 className="headline-gradient font-heading text-4xl font-semibold tracking-[-0.02em] text-balance sm:text-5xl md:text-6xl lg:text-7xl">
       {profile.name}
     </h1>
   );
