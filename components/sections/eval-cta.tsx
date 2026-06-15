@@ -2,6 +2,7 @@ import { Lock, ShieldAlert, Stethoscope } from "lucide-react";
 
 import { EvalAgent } from "@/components/eval/eval-agent";
 import { Section } from "@/components/section";
+import { StatusDot } from "@/components/status-dot";
 
 /**
  * "Score a note for hallucinations" — a live eval demo. A model extracts a
@@ -13,15 +14,23 @@ export function EvalCta() {
   return (
     <Section
       id="eval"
+      index="06"
       eyebrow="Clinical eval"
       title="Score a note for hallucinations"
       description="Paste a synthetic clinical note. An extraction pass produces a structured, FHIR-ish summary (problems, medications, plan); a separate grounding pass labels every extracted claim grounded, partial, or unsupported and cites a span. Then code — not the model — verifies each span against the note and computes the score, so the number can't be gamed. The methodology is shown, not hidden."
     >
-      <div className="border-border bg-card relative overflow-hidden rounded-2xl border p-4 sm:p-6">
+      <div className="panel-ticks border-hairline bg-card relative overflow-hidden rounded-2xl border p-4 shadow-elev-md sm:p-6">
         <div
           aria-hidden
-          className="bg-glow pointer-events-none absolute inset-x-0 top-0 h-40 opacity-60"
+          className="bg-glow pointer-events-none absolute inset-x-0 top-0 h-40 opacity-40"
         />
+
+        <div className="border-hairline relative -mx-4 mb-4 flex items-center justify-between gap-2 border-b px-4 pb-3 sm:-mx-6 sm:px-6">
+          <span className="label-mono text-muted-foreground">CLINEVAL</span>
+          <span className="label-mono text-muted-foreground inline-flex items-center gap-1.5">
+            <StatusDot /> Ready
+          </span>
+        </div>
 
         {/* Non-dismissable PHI warning. */}
         <div

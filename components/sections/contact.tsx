@@ -27,17 +27,18 @@ export function Contact() {
   return (
     <Section
       id="contact"
+      index="09"
       eyebrow="Contact"
       title="Let's build something."
       description="Open to AI/ML engineering roles and genuinely hard problems. The fastest way to reach me is email."
     >
-      <div className="border-border bg-card flex flex-col items-start gap-6 rounded-2xl border p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+      <div className="border-hairline bg-card flex flex-col items-start gap-6 rounded-2xl border p-6 shadow-elev-md sm:flex-row sm:items-center sm:justify-between sm:p-8">
         <div>
-          <p className="text-muted-foreground text-sm">Email</p>
+          <p className="label-mono text-muted-foreground">Email</p>
           <button
             type="button"
             onClick={copyEmail}
-            className="group flex items-center gap-2 text-lg font-medium"
+            className="group flex cursor-pointer items-center gap-2 text-lg font-medium"
             title="Click to copy"
           >
             {profile.email}
