@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 export function Experience() {
   return (
-    <Section id="experience" eyebrow="Experience" title="Where I've shipped.">
+    <Section id="experience" index="02" eyebrow="Experience" title="Where I've shipped.">
       <ol className="border-border relative space-y-10 border-l pl-6 sm:pl-8">
         {experience.map((job, i) => (
           <li key={`${job.company}-${i}`} className="relative">
@@ -24,7 +24,9 @@ export function Experience() {
                   {job.role} · <span className="text-muted-foreground">{job.company}</span>
                 </h3>
                 <p className="text-muted-foreground text-xs">
-                  {job.start} – {job.end}
+                  <span className="font-mono tabular-nums">
+                    {job.start} – {job.end}
+                  </span>
                   {job.location ? ` · ${job.location}` : ""}
                 </p>
               </div>
@@ -38,7 +40,7 @@ export function Experience() {
               </ul>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {job.tech.map((t) => (
-                  <Badge key={t} variant="secondary" className="font-normal">
+                  <Badge key={t} variant="mono">
                     {t}
                   </Badge>
                 ))}

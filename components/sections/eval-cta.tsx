@@ -1,7 +1,8 @@
 import { Lock, ShieldAlert, Stethoscope } from "lucide-react";
 
-import { EvalAgent } from "@/components/eval/eval-agent";
+import { LazyDemo } from "@/components/lazy-demo";
 import { Section } from "@/components/section";
+import { StatusDot } from "@/components/status-dot";
 
 /**
  * "Score a note for hallucinations" — a live eval demo. A model extracts a
@@ -13,20 +14,28 @@ export function EvalCta() {
   return (
     <Section
       id="eval"
+      index="06"
       eyebrow="Clinical eval"
       title="Score a note for hallucinations"
       description="Paste a synthetic clinical note. An extraction pass produces a structured, FHIR-ish summary (problems, medications, plan); a separate grounding pass labels every extracted claim grounded, partial, or unsupported and cites a span. Then code — not the model — verifies each span against the note and computes the score, so the number can't be gamed. The methodology is shown, not hidden."
     >
-      <div className="border-border bg-card relative overflow-hidden rounded-2xl border p-4 sm:p-6">
+      <div className="surface-glass surface-glass-lit relative overflow-hidden rounded-2xl p-4 sm:p-6">
         <div
           aria-hidden
-          className="bg-glow pointer-events-none absolute inset-x-0 top-0 h-40 opacity-60"
+          className="bg-glow pointer-events-none absolute inset-x-0 top-0 h-40 opacity-40"
         />
+
+        <div className="border-hairline relative -mx-4 mb-4 flex items-center justify-between gap-2 border-b px-4 pb-3 sm:-mx-6 sm:px-6">
+          <span className="label-mono text-muted-foreground">CLINEVAL</span>
+          <span className="label-mono text-muted-foreground inline-flex items-center gap-1.5">
+            <StatusDot /> Ready
+          </span>
+        </div>
 
         {/* Non-dismissable PHI warning. */}
         <div
           role="note"
-          className="flex items-start gap-2 rounded-xl border border-amber-500/40 bg-amber-500/10 px-3 py-2.5 text-sm text-amber-700 dark:text-amber-300"
+          className="flex items-start gap-2 rounded-xl border border-amber-500/40 bg-amber-500/15 px-3 py-2.5 text-sm text-amber-800 dark:text-amber-300"
         >
           <ShieldAlert className="mt-0.5 size-4 shrink-0" />
           <p className="text-pretty">
@@ -44,9 +53,9 @@ export function EvalCta() {
           per-claim grounding · score computed in code
         </p>
 
-        <EvalAgent />
+        <LazyDemo kind="eval" minHeight="20rem" />
 
-        <p className="text-muted-foreground/70 mt-4 flex items-center gap-1.5 text-xs">
+        <p className="text-muted-foreground mt-4 flex items-center gap-1.5 text-xs">
           <Lock className="size-3 shrink-0" /> Runs through the same rate-limited, bot-checked proxy
           as the other demos. The note is treated as untrusted data, kept in memory only, and never
           logged or persisted. No API keys in the browser.

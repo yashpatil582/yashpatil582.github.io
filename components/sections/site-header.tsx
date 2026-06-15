@@ -45,7 +45,7 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex h-16 w-full max-w-5xl items-center justify-between px-6">
-        <Link href="#top" className="font-heading text-sm font-bold tracking-tight">
+        <Link href="#top" className="font-mono text-sm font-semibold tracking-tight">
           Yash<span className="text-brand">.</span>Patil
         </Link>
 

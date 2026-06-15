@@ -6,6 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 import { projects, projectCategories } from "@/data/projects";
 import type { ProjectCategory } from "@/data/types";
 import { Section } from "@/components/section";
+import { Reveal } from "@/components/reveal";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -29,6 +30,7 @@ export function Projects() {
   return (
     <Section
       id="projects"
+      index="03"
       eyebrow="Projects"
       title="Things I've built."
       description="Open-source and mostly AI-native. The featured projects power the live demos arriving on this site."
@@ -41,7 +43,7 @@ export function Projects() {
             onClick={() => setFilter(f)}
             aria-pressed={filter === f}
             className={cn(
-              "rounded-full border px-3 py-1 text-xs font-medium transition-colors",
+              "cursor-pointer rounded-full border px-3 py-1 font-mono text-xs tracking-tight transition-colors",
               filter === f
                 ? "border-brand bg-brand text-brand-foreground"
                 : "border-border text-muted-foreground hover:bg-muted",
@@ -52,9 +54,9 @@ export function Projects() {
         ))}
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2">
+      <Reveal className="grid gap-5 sm:grid-cols-2">
         {shown.map((p) => (
-          <Card key={p.slug} className={cn("h-full", p.featured && "ring-brand/40")}>
+          <Card key={p.slug} className={cn("h-full", p.featured && "surface-glass-lit")}>
             <CardHeader>
               <div className="flex items-start justify-between gap-2">
                 <CardTitle>{p.name}</CardTitle>
@@ -71,7 +73,7 @@ export function Projects() {
               {p.impact && <p className="text-brand text-xs font-medium">{p.impact}</p>}
               <div className="mt-auto flex flex-wrap gap-1.5">
                 {p.tech.map((t) => (
-                  <Badge key={t} variant="outline" className="font-normal">
+                  <Badge key={t} variant="mono">
                     {t}
                   </Badge>
                 ))}
@@ -113,7 +115,7 @@ export function Projects() {
             )}
           </Card>
         ))}
-      </div>
+      </Reveal>
     </Section>
   );
 }
