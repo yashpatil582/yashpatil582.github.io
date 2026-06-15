@@ -9,15 +9,15 @@ const GH = "https://github.com/yashpatil582";
  */
 export const projects: Project[] = [
   {
-    slug: "repomind",
-    name: "Repomind",
+    slug: "repo-agent",
+    name: "MCP Repo Agent",
     description:
-      "An MCP tool-using agent that explores and summarizes any public GitHub repository — surfacing architecture, entry points, and how the pieces fit, with its tool calls shown step by step.",
-    impact: "MCP agent",
+      "A live, in-page agent that explores any public GitHub repository over a real in-process MCP server — reading the tree, README, and files through scoped read-only tools and streaming each tool call as it works. Built for this site.",
+    impact: "Live MCP agent",
     tech: ["TypeScript", "MCP", "LLM", "Agents"],
     categories: ["Agents", "LLM"],
-    repo: `${GH}/repomind`,
-    // Live, in-page demo of the same idea — see the "Explore any repo" section.
+    // The agent lives in this site's source; try it live in the "Explore any repo" section.
+    repo: `${GH}/yashpatil582.github.io`,
     demo: "#repo-agent",
     featured: true,
   },
@@ -41,6 +41,7 @@ export const projects: Project[] = [
     tech: ["Python", "LLM-as-Judge", "Evals", "Healthcare AI"],
     categories: ["AI/ML", "LLM"],
     repo: `${GH}/clineval`,
+    demo: "https://dashboard-three-kappa-58.vercel.app",
     featured: true,
   },
   {
@@ -52,6 +53,29 @@ export const projects: Project[] = [
     tech: ["Next.js", "Groq", "Llama 3.3", "Whisper", "Voice AI"],
     categories: ["Agents", "LLM"],
     repo: `${GH}/voice-triage`,
+    demo: "https://voice-triage.vercel.app",
+    featured: true,
+  },
+  {
+    slug: "circuit-extract",
+    name: "Circuit-Extract",
+    description:
+      "Extracts structured data from electrical circuit diagrams into machine-readable relational graphs — a hybrid vision pipeline of PaddleOCR + Gemini/Claude Vision + OpenCV.",
+    impact: "Vision → structured graph",
+    tech: ["Python", "Vision", "OpenCV", "Multimodal"],
+    categories: ["AI/ML"],
+    repo: `${GH}/circuit-extract`,
+    featured: true,
+  },
+  {
+    slug: "databricks-smart-merge",
+    name: "Databricks Smart Merge",
+    description:
+      "Reproduces a real Databricks Assistant failure where partial LLM fixes overwrite working cells, then applies fixes as a safe patch with an inline diff preview — practical LLM safety in code workflows.",
+    impact: "LLM code safety",
+    tech: ["Python", "Streamlit", "Gemini"],
+    categories: ["LLM", "AI/ML"],
+    repo: `${GH}/databricks-agent-smart-merge-demo`,
     featured: true,
   },
   {
@@ -66,70 +90,13 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: "gpt-from-scratch",
-    name: "GPT from Scratch",
-    description:
-      "A 124M-parameter GPT implemented and trained from scratch with a custom tokenizer — transformer internals end to end, no high-level shortcuts.",
-    impact: "124M params from scratch",
-    tech: ["PyTorch", "Transformers", "Deep Learning"],
-    categories: ["AI/ML"],
-    repo: `${GH}/gpt_from_scratch`,
-    featured: true,
-  },
-  {
-    slug: "agentic-rag-llamaindex",
-    name: "Agentic RAG (LlamaIndex)",
-    description:
-      "A RAG pipeline with agentic reasoning and hybrid search over a document corpus, built on LlamaIndex with retrieval-quality evaluation.",
-    tech: ["LlamaIndex", "RAG", "Python"],
-    categories: ["LLM", "AI/ML"],
-    repo: `${GH}/Building-Agentic-RAG-with-Llamaindex`,
-  },
-  {
-    slug: "circuit-extract",
-    name: "Circuit-Extract",
-    description:
-      "Extracts structured data from electrical circuit diagrams into machine-readable relational graphs — a hybrid vision pipeline of PaddleOCR + Gemini/Claude Vision + OpenCV.",
-    tech: ["Python", "Vision", "OpenCV", "Multimodal"],
-    categories: ["AI/ML"],
-    repo: `${GH}/circuit-extract`,
-  },
-  {
     slug: "fintech-decisioning-agent",
     name: "Fintech Decisioning Agent",
     description:
-      "A LangChain agent on AWS Bedrock with RAG workflows and a FastAPI backend, deployed to EKS via GitHub Actions CI/CD.",
+      "A LangChain agent on AWS Bedrock with RAG workflows and a FastAPI backend, with an EKS deployment pipeline (CI/CD via GitHub Actions).",
     tech: ["LangChain", "AWS Bedrock", "FastAPI", "Kubernetes"],
     categories: ["Agents", "Data"],
     repo: `${GH}/fintech-decisioning-agent`,
-  },
-  {
-    slug: "neural-fabric",
-    name: "Neural-Fabric",
-    description:
-      "A production-quality neural-network framework written in pure Python + NumPy — autograd, layers, and optimizers built from first principles.",
-    tech: ["Python", "NumPy", "Deep Learning"],
-    categories: ["AI/ML"],
-    repo: `${GH}/neural-fabric`,
-  },
-  {
-    slug: "databricks-smart-merge",
-    name: "Databricks Smart Merge",
-    description:
-      "Reproduces a real Databricks Assistant failure where partial LLM fixes overwrite working cells, then applies fixes as a safe patch with an inline diff preview — practical LLM safety in code workflows.",
-    impact: "LLM code safety",
-    tech: ["Python", "Streamlit", "Gemini"],
-    categories: ["LLM", "AI/ML"],
-    repo: `${GH}/databricks-agent-smart-merge-demo`,
-  },
-  {
-    slug: "multi-agent-chatbot",
-    name: "Multi-Agent Chatbot",
-    description:
-      "A multi-agent system that routes tasks across parallel LLM agents for faster, more reliable resolution.",
-    tech: ["Python", "Multi-Agent", "LLM"],
-    categories: ["Agents", "LLM"],
-    repo: `${GH}/Multi-Agent-Chatbot-Application`,
   },
 ];
 
