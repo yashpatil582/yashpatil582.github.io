@@ -11,14 +11,14 @@ export const profile: Profile = {
   available: true,
   resumeUrl: "/Yash_Patil_Resume.pdf",
   summary: [
-    "I'm an AI/ML engineer with ~4 years of experience shipping LLM, retrieval, and agentic systems to production. Right now I'm a founding AI engineer at Tip Top Technologies, where I redesigned a real-time ranking pipeline (NDCG@10 +15%, p95 120ms → <50ms) and built an embedding-based semantic retrieval system serving 2M+ queries a day.",
-    "My work runs the full stack of applied AI: RAG and hybrid search, multi-agent orchestration, and evaluation harnesses that actually catch hallucinations — much of it in healthcare, where correctness and HIPAA compliance are non-negotiable. I care about reproducibility and open weights: my projects are MIT-licensed and run locally with one command.",
+    "I'm an AI/ML engineer with ~4 years of experience shipping LLM, retrieval, and agentic systems to production. Right now I'm an AI/ML engineer at Tip Top Technologies, where I redesigned a real-time ranking pipeline (NDCG@10 +15%, p95 120ms → <50ms) and built an embedding-based semantic retrieval system serving 2M+ queries a day.",
+    "My work runs the full stack of applied AI: RAG and hybrid search, multi-agent orchestration, and evaluation harnesses that actually catch hallucinations — much of it in healthcare, where correctness and HIPAA compliance are non-negotiable. I care about reproducibility and open weights: my projects are open-source and reproducible.",
     "I hold an M.S. in Computer Science from Santa Clara University. Before that I built large-scale data and ML pipelines across search and life-sciences companies.",
   ],
   metrics: [
     { value: "2M+", label: "queries / day served" },
     { value: "+15%", label: "NDCG@10 ranking lift" },
-    { value: "<50ms", label: "p95 retrieval latency" },
+    { value: "<50ms", label: "p95 ranking latency" },
     { value: "~4 yrs", label: "applied AI/ML" },
   ],
   socials: [
