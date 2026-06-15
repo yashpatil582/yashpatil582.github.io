@@ -24,6 +24,8 @@ export function Hero() {
             width={360}
             height={360}
             priority
+            fetchPriority="high"
+            sizes="(min-width: 768px) 400px, (min-width: 640px) 288px, 224px"
             className="border-hairline aspect-square w-56 rounded-2xl border object-cover shadow-elev-lg sm:w-72 md:w-full"
           />
         </div>
