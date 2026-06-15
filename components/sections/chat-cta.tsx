@@ -1,6 +1,6 @@
 import { Lock, Sparkles } from "lucide-react";
 
-import { ChatAgent } from "@/components/chat/chat-agent";
+import { LazyDemo } from "@/components/lazy-demo";
 import { Section } from "@/components/section";
 import { StatusDot } from "@/components/status-dot";
 
@@ -42,7 +42,7 @@ export function ChatCta() {
           content
         </p>
 
-        <ChatAgent suggestions={sampleQuestions} />
+        <LazyDemo kind="chat" suggestions={sampleQuestions} minHeight="22rem" />
 
         <p className="text-muted-foreground mt-3 flex items-center gap-1.5 text-xs">
           <Lock className="size-3 shrink-0" /> Open-weight model + pgvector RAG through a

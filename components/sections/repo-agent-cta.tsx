@@ -1,6 +1,6 @@
 import { Lock, Wrench } from "lucide-react";
 
-import { RepoAgent } from "@/components/repo-agent/repo-agent";
+import { LazyDemo } from "@/components/lazy-demo";
 import { Section } from "@/components/section";
 import { StatusDot } from "@/components/status-dot";
 
@@ -36,7 +36,7 @@ export function RepoAgentCta() {
           API · public repos only
         </p>
 
-        <RepoAgent />
+        <LazyDemo kind="repo-agent" minHeight="15rem" />
 
         <p className="text-muted-foreground mt-4 flex items-center gap-1.5 text-xs">
           <Lock className="size-3 shrink-0" /> Read-only, single-repo tools through a rate-limited,

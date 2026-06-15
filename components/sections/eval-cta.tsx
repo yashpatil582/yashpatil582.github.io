@@ -1,6 +1,6 @@
 import { Lock, ShieldAlert, Stethoscope } from "lucide-react";
 
-import { EvalAgent } from "@/components/eval/eval-agent";
+import { LazyDemo } from "@/components/lazy-demo";
 import { Section } from "@/components/section";
 import { StatusDot } from "@/components/status-dot";
 
@@ -53,7 +53,7 @@ export function EvalCta() {
           per-claim grounding · score computed in code
         </p>
 
-        <EvalAgent />
+        <LazyDemo kind="eval" minHeight="20rem" />
 
         <p className="text-muted-foreground mt-4 flex items-center gap-1.5 text-xs">
           <Lock className="size-3 shrink-0" /> Runs through the same rate-limited, bot-checked proxy
