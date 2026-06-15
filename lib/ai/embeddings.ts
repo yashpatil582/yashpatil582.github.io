@@ -1,4 +1,4 @@
-import { env, pipeline, type FeatureExtractionPipeline } from "@huggingface/transformers";
+import type { FeatureExtractionPipeline } from "@huggingface/transformers";
 
 /**
  * Provider-agnostic embeddings adapter. Default = an OPEN model run in-process
@@ -34,11 +34,16 @@ declare global {
 }
 
 function getPipeline(): Promise<FeatureExtractionPipeline> {
-  // Pull weights from the HF hub cache; never look for a local ./models dir.
-  env.allowLocalModels = false;
   if (!globalThis.__embedPipeline) {
     const model = process.env.EMBEDDINGS_MODEL ?? DEFAULT_MODEL;
-    globalThis.__embedPipeline = pipeline("feature-extraction", model);
+    // Lazy dynamic import so the native ONNX runtime (onnxruntime-node) stays OUT
+    // of the module graph unless the LOCAL embedder is actually used. On serverless
+    // (EMBEDDINGS_PROVIDER=hosted) libonnxruntime.so.1 isn't available, and a
+    // top-level import would crash the route at module load.
+    globalThis.__embedPipeline = import("@huggingface/transformers").then(({ env, pipeline }) => {
+      env.allowLocalModels = false; // pull weights from the HF hub; never a local ./models dir
+      return pipeline("feature-extraction", model);
+    });
   }
   return globalThis.__embedPipeline;
 }
@@ -73,11 +78,14 @@ async function embedHosted(texts: string[]): Promise<number[][]> {
   const token = process.env.HF_API_TOKEN;
   if (!token) throw new Error("EMBEDDINGS_PROVIDER=hosted requires HF_API_TOKEN.");
   const model = process.env.EMBEDDINGS_MODEL?.replace(/^Xenova\//, "") ?? "BAAI/bge-small-en-v1.5";
-  const res = await fetch(`https://api-inference.huggingface.co/models/${model}`, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ inputs: texts, options: { wait_for_model: true } }),
-  });
+  const res = await fetch(
+    `https://router.huggingface.co/hf-inference/models/${model}/pipeline/feature-extraction`,
+    {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ inputs: texts, options: { wait_for_model: true } }),
+    },
+  );
   if (!res.ok) throw new Error(`Hosted embeddings failed: ${res.status} ${await res.text()}`);
   const data = (await res.json()) as number[][];
   return data.map(l2normalize);
