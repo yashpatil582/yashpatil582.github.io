@@ -93,7 +93,7 @@ export function AgentSkills() {
         })}
       </RevealGroup>
 
-      <p className="text-muted-foreground/70 mt-6 flex items-center gap-1.5 text-xs">
+      <p className="text-muted-foreground mt-6 flex items-center gap-1.5 text-xs">
         <ScrollText className="size-3 shrink-0" /> Anthropic SKILL.md format — clone one into{" "}
         <code className="font-mono">~/.claude/skills/</code>. Each runs its worked example and tests
         offline, with no API key.{" "}

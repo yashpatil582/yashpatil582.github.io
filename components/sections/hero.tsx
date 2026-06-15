@@ -40,10 +40,10 @@ export function Hero() {
           <dl className="bg-border grid grid-cols-2 gap-px sm:grid-cols-4">
             {profile.metrics.map((m, i) => (
               <div key={m.label} className="bg-card px-5 py-5">
-                <span className="label-mono text-muted-foreground/60 block">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <dt className="mt-1 font-mono text-2xl font-semibold tracking-tight tabular-nums sm:text-3xl">
+                <dt className="font-mono text-2xl font-semibold tracking-tight tabular-nums sm:text-3xl">
+                  <span aria-hidden className="label-mono text-muted-foreground mb-1 block">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   <NumberTicker value={m.value} />
                 </dt>
                 <dd className="text-muted-foreground mt-1 text-xs">{m.label}</dd>

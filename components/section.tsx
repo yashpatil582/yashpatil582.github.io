@@ -28,7 +28,11 @@ export function Section({
           <header className="mb-12 max-w-2xl">
             {(eyebrow || index) && (
               <p className="label-mono mb-3 flex items-center gap-2">
-                {index && <span className="text-muted-foreground/70 tabular-nums">{index}</span>}
+                {index && (
+                  <span aria-hidden className="text-muted-foreground tabular-nums">
+                    {index}
+                  </span>
+                )}
                 {index && eyebrow && (
                   <span aria-hidden className="text-border">
                     /
